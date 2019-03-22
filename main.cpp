@@ -3,8 +3,5 @@
 
 int main(){
 
-
-
-
     cout<<"jooj"<<endl;
 }
