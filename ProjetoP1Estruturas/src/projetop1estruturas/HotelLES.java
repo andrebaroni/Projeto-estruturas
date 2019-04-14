@@ -1,4 +1,7 @@
 package projetop1estruturas;
+
+import javax.swing.JOptionPane;
+
 /*
  * @author Eduardo Baptista
  */
@@ -20,7 +23,7 @@ public class HotelLES {
      
     public void insereNoQuarto(int x){
         if(quartosOcupados==50){
-            System.out.println("O hotel não suporta mais locações!");
+            JOptionPane.showMessageDialog(null, "O hotel não suporta mais locações!");
         }
         vetorHotel[x] = 'O';
         quartosOcupados++;
@@ -29,8 +32,8 @@ public class HotelLES {
     
     public void imprime(){
         System.out.println(vetorHotel[2]);
-        System.out.println("Quartos ocupados: " + quartosOcupados);
-        System.out.println("Quartos livres: " + quartosLivres);
+        JOptionPane.showMessageDialog(null, "Quartos ocupados: " + quartosOcupados);
+        JOptionPane.showMessageDialog(null, "Quartos livres: " + quartosLivres);
     }  
 }     
 
