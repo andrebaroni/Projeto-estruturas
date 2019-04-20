@@ -5,6 +5,9 @@
  */
 package projetop1estruturas;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Eduardo Baptista
@@ -76,7 +79,7 @@ public class CadastraHospede extends javax.swing.JFrame {
         txtHoraCheckout = new java.awt.TextField();
         jLabel25 = new javax.swing.JLabel();
         txtNumeroAp = new java.awt.TextField();
-        jToggleButtonCadastrar = new javax.swing.JToggleButton();
+        cadastrarButton = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -373,13 +376,18 @@ public class CadastraHospede extends javax.swing.JFrame {
 
         txtNumeroAp.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtNumeroAp.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-
-        jToggleButtonCadastrar.setBackground(new java.awt.Color(102, 255, 102));
-        jToggleButtonCadastrar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jToggleButtonCadastrar.setText("Cadastrar");
-        jToggleButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
+        txtNumeroAp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButtonCadastrarActionPerformed(evt);
+                txtNumeroApActionPerformed(evt);
+            }
+        });
+
+        cadastrarButton.setBackground(new java.awt.Color(102, 255, 102));
+        cadastrarButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        cadastrarButton.setText("Cadastrar");
+        cadastrarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarButtonActionPerformed(evt);
             }
         });
 
@@ -426,7 +434,7 @@ public class CadastraHospede extends javax.swing.JFrame {
                             .addComponent(txtHoraCheckout, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtHoraCheckin, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(50, 50, 50)
-                .addComponent(jToggleButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cadastrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
         jPanel3Layout.setVerticalGroup(
@@ -463,7 +471,7 @@ public class CadastraHospede extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jToggleButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(cadastrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -505,11 +513,59 @@ public class CadastraHospede extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelefoneActionPerformed
 
-    private void jToggleButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonCadastrarActionPerformed
+    private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
         // TODO add your handling code here:
+        String nome = txtNome.getText();
+        String sobrenome = txtSobrenome.getText();
+        String telefone = txtTelefone.getText();
+        String birth = txtDiaNasc.getText() + "/" + txtMesNasc.getText() + "/" + txtAnoNasc.getText();
+        String cpf = txtCPF.getText();
+        String email = txtEmail.getText();
+        String endereco = txtRua.getText() + ", " + txtNumeroCasa.getText() + " - " + txtBairro.getText();
+        String quarto = txtNumeroAp.getText();
         
-    }//GEN-LAST:event_jToggleButtonCadastrarActionPerformed
+        Hospede hospede = new Hospede(nome, sobrenome, birth, cpf, email, telefone, endereco, quarto);
+        hotel = new HotelLES(hospede);
+        hotel.insereNoQuarto(10);//so ta add no quarto 10
+        todosHospedes.add(hotel);
+        
+        apagarCampos();
+        //BuscaHospedes busca_hospedes = new BuscaHospedes();
+        //busca_hospedes.setVisible(true);
+        //busca_hospedes.exibirTodos(todosHospedes);
+        
+        JOptionPane.showMessageDialog(null, "Hospede " + nome + " " + sobrenome + " cadastrado!");
+        //new InterfaceHotel().setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_cadastrarButtonActionPerformed
 
+    private void txtNumeroApActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroApActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumeroApActionPerformed
+
+    public void apagarCampos(){
+        txtNome.setText("");
+        txtSobrenome.setText("");
+        txtTelefone.setText("");
+        txtDiaNasc.setText("");
+        txtMesNasc.setText("");
+        txtAnoNasc.setText("");
+        txtCPF.setText("");
+        txtEmail.setText("");
+        txtRua.setText("");
+        txtNumeroCasa.setText("");
+        txtBairro.setText("");
+        txtCidade1.setText("");
+        txtUF.setText("");
+        txtCEP.setText("");
+        txtDiaReserva.setText("");
+        txtMesReserva1.setText("");
+        txtAnoReserva.setText("");
+        txtHoraCheckin.setText("");
+        txtHoraCheckout.setText("");
+        txtQuantidadeHospedes1.setText("");
+        txtNumeroAp.setText("");
+    }
     /**
      * @param args the command line arguments
      */
@@ -544,8 +600,15 @@ public class CadastraHospede extends javax.swing.JFrame {
             }
         });
     }
-
+    public ArrayList<HotelLES> todosHospedes = new ArrayList<>();
+    private HotelLES hotel;
+    //public ArrayList<Hospede> getHospedes() {
+        //return hospedes;
+    //}
+    //public ArrayList<Hospede> hospedes = new ArrayList<>();
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton cadastrarButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -574,7 +637,6 @@ public class CadastraHospede extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JToggleButton jToggleButtonCadastrar;
     private java.awt.TextField txtAnoNasc;
     private java.awt.TextField txtAnoReserva;
     private java.awt.TextField txtBairro;

@@ -18,8 +18,9 @@ public class Hospede {
     private String email;
     private String telefone;
     private String endereco;
+    private String quarto;
 
-    public Hospede(String nome, String sobrenome, String dataNascimento, String CPF, String email, String telefone, String endereco) {
+    public Hospede(String nome, String sobrenome, String dataNascimento, String CPF, String email, String telefone, String endereco, String quarto) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.dataNascimento = dataNascimento;
@@ -27,6 +28,15 @@ public class Hospede {
         this.email = email;
         this.telefone = telefone;
         this.endereco = endereco;
+        this.quarto = quarto;
+    }
+
+    public String getQuarto() {
+        return quarto;
+    }
+
+    public void setQuarto(String quarto) {
+        this.quarto = quarto;
     }
 
     public String getNome() {
