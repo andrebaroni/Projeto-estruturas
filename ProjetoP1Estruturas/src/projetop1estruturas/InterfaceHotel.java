@@ -5,12 +5,14 @@
  */
 package projetop1estruturas;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Eduardo Baptista
  */
 public class InterfaceHotel extends javax.swing.JFrame {
-
+    CadastraHospede c = new CadastraHospede();
     /**
      * Creates new form InterfaceHotel
      */
@@ -116,7 +118,10 @@ public class InterfaceHotel extends javax.swing.JFrame {
     /* Botão para cadastrar novos hóspedes */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        new CadastraHospede().setVisible(true);
+        //CadastraHospede c = new CadastraHospede();
+        c.setVisible(true);
+        
+        //setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonHospedesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHospedesActionPerformed
@@ -125,6 +130,11 @@ public class InterfaceHotel extends javax.swing.JFrame {
 
     private void jButtonBuscaHospedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscaHospedeActionPerformed
         // TODO add your handling code here:
+        BuscaHospedes busca_hospedes = new BuscaHospedes();
+        busca_hospedes.setVisible(true);
+        //hospedes.add(HotelLES.getHospedes());
+        //hospedes.add(new Hospede("a", "b", "c", "d", "e", "f", "g"));
+        busca_hospedes.exibirTodos(c.todosHospedes);
     }//GEN-LAST:event_jButtonBuscaHospedeActionPerformed
 
     private void jButtonEstacionamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstacionamentoActionPerformed
@@ -165,7 +175,8 @@ public class InterfaceHotel extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    private ArrayList<HotelLES> hospedes = new ArrayList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonBuscaHospede;
