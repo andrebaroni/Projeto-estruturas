@@ -6,6 +6,7 @@
 package projetop1estruturas;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -126,6 +127,9 @@ public class InterfaceHotel extends javax.swing.JFrame {
 
     private void jButtonHospedesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHospedesActionPerformed
         // TODO add your handling code here:
+        MostraHospedes mostra_hospedes = new MostraHospedes();
+        mostra_hospedes.setVisible(true);
+        mostra_hospedes.exibirTodos(c.quartos);
     }//GEN-LAST:event_jButtonHospedesActionPerformed
 
     private void jButtonBuscaHospedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscaHospedeActionPerformed
@@ -134,7 +138,11 @@ public class InterfaceHotel extends javax.swing.JFrame {
         busca_hospedes.setVisible(true);
         //hospedes.add(HotelLES.getHospedes());
         //hospedes.add(new Hospede("a", "b", "c", "d", "e", "f", "g"));
-        busca_hospedes.exibirTodos(c.todosHospedes);
+        //busca_hospedes.exibirTodos(c.todosHospedes);
+       // busca_hospedes.exibirTodos(c.quartos);
+        int room = Integer.parseInt(JOptionPane.showInputDialog("Digite o quarto: "));
+        busca_hospedes.Search(room, c.quartos);
+        
     }//GEN-LAST:event_jButtonBuscaHospedeActionPerformed
 
     private void jButtonEstacionamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstacionamentoActionPerformed
