@@ -545,8 +545,6 @@ public class CadastraHospede extends javax.swing.JFrame {
         }
         //quarto.insereNoQuarto(Integer.parseInt(numQuarto));//so ta add no quarto 10
         //todosHospedes.add(Integer.parseInt(numQuarto), quarto);
-        
-        
         //BuscaHospedes busca_hospedes = new BuscaHospedes();
         //busca_hospedes.setVisible(true);
         //busca_hospedes.exibirTodos(todosHospedes);
