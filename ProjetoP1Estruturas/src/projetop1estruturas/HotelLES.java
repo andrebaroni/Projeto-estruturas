@@ -10,16 +10,26 @@ public class HotelLES {
         //hospedes.add(hospede);
         this.hospede = hospede;
         //quartosOcupados = 0;
+        //vetorHotel[Integer.parseInt(hospede.getQuarto())] = hospede.getNome();
     }
     /*Construtor da classe que inicia com n inicial em zero */
     
     private Hospede hospede;
     /*Cada índice do vetorHotel é um dos quartos do hotel o hotel possui 50 quartos para locação*/
-    private final char vetorHotel[] = new char[50];
+    public String vetorHotel[] = new String[50];
     /*O estacionamento comporta 50 veículos */
     private final char vetorEstacionamento[] = new char[50];
-    private int quartosOcupados;
+    private int quartosOcupados = 0;
     private int quartosLivres = 50;
+
+    public String[] getVetorHotel() {
+        //String guest = vetorHotel[x];
+        return vetorHotel;
+    }
+
+    public void setVetorHotel(String[] vetorHotel) {
+        this.vetorHotel = vetorHotel;
+    }
     
     
 
@@ -35,7 +45,7 @@ public class HotelLES {
         if(quartosOcupados==50){
             JOptionPane.showMessageDialog(null, "O hotel não suporta mais locações!");
         }
-        vetorHotel[x] = 'O';
+        vetorHotel[x] = hospede.getNome();
         quartosOcupados++;
         quartosLivres--;
     }

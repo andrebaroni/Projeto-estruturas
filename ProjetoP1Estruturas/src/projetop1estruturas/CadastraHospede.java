@@ -132,6 +132,7 @@ public class CadastraHospede extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setText("Data de nascimento");
+        jLabel8.setToolTipText("");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setText("Dia:");
@@ -515,6 +516,7 @@ public class CadastraHospede extends javax.swing.JFrame {
 
     private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
         // TODO add your handling code here:
+        //apagarCampos();
         String nome = txtNome.getText();
         String sobrenome = txtSobrenome.getText();
         String telefone = txtTelefone.getText();
@@ -522,21 +524,34 @@ public class CadastraHospede extends javax.swing.JFrame {
         String cpf = txtCPF.getText();
         String email = txtEmail.getText();
         String endereco = txtRua.getText() + ", " + txtNumeroCasa.getText() + " - " + txtBairro.getText();
-        String quarto = txtNumeroAp.getText();
+        String numQuarto = txtNumeroAp.getText();
+        System.out.println("numQuarto: " + numQuarto);
         
-        Hospede hospede = new Hospede(nome, sobrenome, birth, cpf, email, telefone, endereco, quarto);
-        hotel = new HotelLES(hospede);
-        hotel.insereNoQuarto(10);//so ta add no quarto 10
-        todosHospedes.add(hotel);
+        if(Integer.parseInt(numQuarto) > 50){
+            JOptionPane.showMessageDialog(null, "Existem apenas 49 quartos!");
+            txtNumeroAp.setText("");
+        }
         
-        apagarCampos();
+        if(!"".equals(numQuarto) && !"".equals(nome)){
+            Hospede hospede = new Hospede(nome, sobrenome, birth, cpf, email, telefone, endereco, numQuarto);
+            quarto = new HotelLES(hospede);
+            quartos[Integer.parseInt(numQuarto)] = quarto;
+            apagarCampos();
+            JOptionPane.showMessageDialog(null, "Hospede " + nome + " " + sobrenome + " cadastrado!");
+            setVisible(false);
+        }else if(numQuarto.equals("")){
+            System.out.println("jooj");
+            JOptionPane.showMessageDialog(null, "Digite o número do quarto e o nome do hospede!");
+        }
+        //quarto.insereNoQuarto(Integer.parseInt(numQuarto));//so ta add no quarto 10
+        //todosHospedes.add(Integer.parseInt(numQuarto), quarto);
         //BuscaHospedes busca_hospedes = new BuscaHospedes();
         //busca_hospedes.setVisible(true);
         //busca_hospedes.exibirTodos(todosHospedes);
         
-        JOptionPane.showMessageDialog(null, "Hospede " + nome + " " + sobrenome + " cadastrado!");
+        
         //new InterfaceHotel().setVisible(true);
-        setVisible(false);
+        
     }//GEN-LAST:event_cadastrarButtonActionPerformed
 
     private void txtNumeroApActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroApActionPerformed
@@ -600,8 +615,9 @@ public class CadastraHospede extends javax.swing.JFrame {
             }
         });
     }
-    public ArrayList<HotelLES> todosHospedes = new ArrayList<>();
-    private HotelLES hotel;
+    public ArrayList<HotelLES> todosHospedes = new ArrayList<HotelLES>(50);
+    public HotelLES quarto;
+    public HotelLES quartos[] = new HotelLES[50];
     //public ArrayList<Hospede> getHospedes() {
         //return hospedes;
     //}
