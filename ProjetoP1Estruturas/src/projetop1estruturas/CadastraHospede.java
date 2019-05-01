@@ -525,7 +525,7 @@ public class CadastraHospede extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTelefoneActionPerformed
     
     private void cadastrarComanda(){
-        int numero = 1;
+        int numero;
         comanda.insere(numero++);
     }
     private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
