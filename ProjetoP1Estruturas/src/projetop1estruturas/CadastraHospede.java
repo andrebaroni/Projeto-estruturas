@@ -5,8 +5,11 @@
  */
 package projetop1estruturas;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -75,6 +78,7 @@ public class CadastraHospede extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         txtNumeroAp = new java.awt.TextField();
         cadastrarButton = new javax.swing.JToggleButton();
+        listarQuartos = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -470,6 +474,12 @@ public class CadastraHospede extends javax.swing.JFrame {
                 .addComponent(cadastrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        listarQuartos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarQuartosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -484,7 +494,10 @@ public class CadastraHospede extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(302, 302, 302)
+                        .addComponent(listarQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -497,7 +510,9 @@ public class CadastraHospede extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(listarQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanel1.getAccessibleContext().setAccessibleName("");
@@ -508,17 +523,38 @@ public class CadastraHospede extends javax.swing.JFrame {
     private void txtTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelefoneActionPerformed
-
+    
+    private void cadastrarComanda(){
+        int numero = 1;
+        comanda.insere(numero++);
+    }
     private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
         // TODO add your handling code here:
         //apagarCampos();
+        
         String nome = txtNome.getText();
+        if(nome.isEmpty()){
+            JOptionPane.showMessageDialog(null, MensagensErro.CAMPO_OBRIGATORIO_NOME.getMensagem());
+        }
         String sobrenome = txtSobrenome.getText();
+        if(sobrenome.isEmpty()){
+            JOptionPane.showMessageDialog(null, MensagensErro.CAMPO_OBRIGATORIO_SOBRENOME.getMensagem());
+        }
         String telefone = txtTelefone.getText();
         String birth = txtDiaNasc.getText() + "/" + txtMesNasc.getText() + "/" + txtAnoNasc.getText();
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        try{
+            format.setLenient(false);
+            format.parse(birth);
+        }catch(ParseException e){
+            JOptionPane.showMessageDialog(null,MensagensErro.DATA_INVALIDA.getMensagem());
+        }     
         String cpf = txtCPF.getText();
         String email = txtEmail.getText();
         String endereco = txtRua.getText() + ", " + txtNumeroCasa.getText() + " - " + txtBairro.getText();
+        if(endereco.isEmpty()){
+             JOptionPane.showMessageDialog(null,MensagensErro.CAMPO_OBRIGATORIO_ENDERECO.getMensagem());
+        }
         String numQuarto = txtNumeroAp.getText();
         System.out.println("numQuarto: " + numQuarto);
         
@@ -536,6 +572,7 @@ public class CadastraHospede extends javax.swing.JFrame {
             quartos[Integer.parseInt(numQuarto)] = quarto;
             apagarCampos();
             JOptionPane.showMessageDialog(null, "Hospede " + nome + " " + sobrenome + " cadastrado!");
+            cadastrarComanda();
             setVisible(false);
         }else if(numQuarto.equals("")){
             System.out.println("jooj");
@@ -547,6 +584,12 @@ public class CadastraHospede extends javax.swing.JFrame {
     private void txtNumeroApActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroApActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroApActionPerformed
+
+    private void listarQuartosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarQuartosActionPerformed
+        // TODO add your handling code here:
+        //teste
+        listarQuartos.addItem("Quarto 1");
+    }//GEN-LAST:event_listarQuartosActionPerformed
 
     public void apagarCampos(){
         txtNome.setText("");
@@ -605,6 +648,7 @@ public class CadastraHospede extends javax.swing.JFrame {
             }
         });
     }
+    public Comanda comanda = new Comanda();
     public HotelLDE h = new HotelLDE();
     public Hash hash = new Hash();
     public HotelLES quarto;
@@ -640,6 +684,7 @@ public class CadastraHospede extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JComboBox<String> listarQuartos;
     private java.awt.TextField txtAnoNasc;
     private java.awt.TextField txtAnoReserva;
     private java.awt.TextField txtBairro;

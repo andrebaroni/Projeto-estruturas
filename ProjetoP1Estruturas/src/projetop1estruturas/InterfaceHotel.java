@@ -35,6 +35,8 @@ public class InterfaceHotel extends javax.swing.JFrame {
         jButtonHospedes = new javax.swing.JButton();
         jButtonBuscaHospede = new javax.swing.JButton();
         jButtonEstacionamento = new javax.swing.JButton();
+        jQuartos = new javax.swing.JButton();
+        jButtonHospedes1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,7 +55,7 @@ public class InterfaceHotel extends javax.swing.JFrame {
 
         jButtonHospedes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButtonHospedes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/guest.png"))); // NOI18N
-        jButtonHospedes.setText("   Hóspedes ");
+        jButtonHospedes.setText("Check-out");
         jButtonHospedes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonHospedesActionPerformed(evt);
@@ -78,6 +80,24 @@ public class InterfaceHotel extends javax.swing.JFrame {
             }
         });
 
+        jQuartos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jQuartos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add-hotel-symbol.png"))); // NOI18N
+        jQuartos.setText("Quartos ");
+        jQuartos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jQuartosActionPerformed(evt);
+            }
+        });
+
+        jButtonHospedes1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonHospedes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/guest.png"))); // NOI18N
+        jButtonHospedes1.setText("Check-in");
+        jButtonHospedes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonHospedes1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,34 +105,38 @@ public class InterfaceHotel extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(400, 400, 400)
+                        .addComponent(jLabelNome))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(218, 218, 218)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonHospedes, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(232, 232, 232)
+                            .addComponent(jButtonHospedes1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(231, 231, 231)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonEstacionamento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonBuscaHospede, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonEstacionamento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(400, 400, 400)
-                        .addComponent(jLabelNome)))
-                .addContainerGap(244, Short.MAX_VALUE))
+                            .addComponent(jButtonHospedes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(245, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(108, 108, 108)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonBuscaHospede, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(jButtonEstacionamento, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(jButtonHospedes, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(364, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonBuscaHospede, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonEstacionamento, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonHospedes, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonHospedes1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(327, Short.MAX_VALUE))
         );
 
         pack();
@@ -151,6 +175,16 @@ public class InterfaceHotel extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonEstacionamentoActionPerformed
 
+    private void jQuartosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jQuartosActionPerformed
+            // TODO add your handling code here:
+            quartos.setVisible(true);
+        
+    }//GEN-LAST:event_jQuartosActionPerformed
+
+    private void jButtonHospedes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHospedes1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonHospedes1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -186,12 +220,15 @@ public class InterfaceHotel extends javax.swing.JFrame {
         });
     }
     
+    private QuartosDisponiveis quartos = new QuartosDisponiveis();
     private ArrayList<HotelLES> hospedes = new ArrayList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonBuscaHospede;
     private javax.swing.JButton jButtonEstacionamento;
     private javax.swing.JButton jButtonHospedes;
+    private javax.swing.JButton jButtonHospedes1;
     private javax.swing.JLabel jLabelNome;
+    private javax.swing.JButton jQuartos;
     // End of variables declaration//GEN-END:variables
 }
