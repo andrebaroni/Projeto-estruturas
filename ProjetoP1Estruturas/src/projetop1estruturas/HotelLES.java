@@ -1,6 +1,5 @@
 package projetop1estruturas;
 
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /*Criando a classe LES para gerenciar os quartos do hotel*/

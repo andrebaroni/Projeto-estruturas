@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  * @author Eduardo Baptista
  */
 public class InterfaceHotel extends javax.swing.JFrame {
-    CadastraHospede c = new CadastraHospede();
+  
     /**
      * Creates new form InterfaceHotel
      */
@@ -32,11 +32,14 @@ public class InterfaceHotel extends javax.swing.JFrame {
 
         jLabelNome = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButtonHospedes = new javax.swing.JButton();
+        jButtonCheckout = new javax.swing.JButton();
         jButtonBuscaHospede = new javax.swing.JButton();
         jButtonEstacionamento = new javax.swing.JButton();
         jQuartos = new javax.swing.JButton();
         jButtonHospedes1 = new javax.swing.JButton();
+        jButtonSair = new javax.swing.JButton();
+        jButtonAvaliacao = new javax.swing.JButton();
+        jButtonVerAvaliacoes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,12 +56,12 @@ public class InterfaceHotel extends javax.swing.JFrame {
             }
         });
 
-        jButtonHospedes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButtonHospedes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/guest.png"))); // NOI18N
-        jButtonHospedes.setText("Check-out");
-        jButtonHospedes.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCheckout.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonCheckout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/guest.png"))); // NOI18N
+        jButtonCheckout.setText("Check-out");
+        jButtonCheckout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonHospedesActionPerformed(evt);
+                jButtonCheckoutActionPerformed(evt);
             }
         });
 
@@ -98,32 +101,64 @@ public class InterfaceHotel extends javax.swing.JFrame {
             }
         });
 
+        jButtonSair.setText("Sair");
+        jButtonSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSairActionPerformed(evt);
+            }
+        });
+
+        jButtonAvaliacao.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonAvaliacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/guest.png"))); // NOI18N
+        jButtonAvaliacao.setText("Avaliação");
+        jButtonAvaliacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAvaliacaoActionPerformed(evt);
+            }
+        });
+
+        jButtonVerAvaliacoes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonVerAvaliacoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/guest.png"))); // NOI18N
+        jButtonVerAvaliacoes.setText("Ver avaliações");
+        jButtonVerAvaliacoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerAvaliacoesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(400, 400, 400)
-                        .addComponent(jLabelNome))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(218, 218, 218)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonHospedes1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(231, 231, 231)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonEstacionamento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonBuscaHospede, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonHospedes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(400, 400, 400)
+                .addComponent(jLabelNome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonSair)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(218, 218, 218)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonHospedes1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(231, 231, 231)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonEstacionamento, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonBuscaHospede, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCheckout, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonVerAvaliacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(245, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonSair)))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -134,12 +169,17 @@ public class InterfaceHotel extends javax.swing.JFrame {
                     .addComponent(jButtonEstacionamento, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonHospedes, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCheckout, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonHospedes1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(327, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonVerAvaliacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     
     /* Botão para cadastrar novos hóspedes */
@@ -147,28 +187,26 @@ public class InterfaceHotel extends javax.swing.JFrame {
         // TODO add your handling code here:
         //CadastraHospede c = new CadastraHospede();
         c.setVisible(true);
-        
+      
         //setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButtonHospedesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHospedesActionPerformed
+    private void jButtonCheckoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCheckoutActionPerformed
         // TODO add your handling code here:
-        MostraHospedes mostra_hospedes = new MostraHospedes();
-        mostra_hospedes.setVisible(true);
-        mostra_hospedes.exibirTodos(c.quartos);
-    }//GEN-LAST:event_jButtonHospedesActionPerformed
+        String room = JOptionPane.showInputDialog("Digite o quarto: ");
+        No busca = h.buscaHospede(room);
+        String nome = busca.pessoa.getNome();
+        String sobrenome = busca.pessoa.getSobrenome();
+        h.removeHospede(room);
+        JOptionPane.showMessageDialog(null, "Check-out do hóspede " + nome + " " + sobrenome + " realizado com sucesso!");
+    }//GEN-LAST:event_jButtonCheckoutActionPerformed
 
     private void jButtonBuscaHospedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscaHospedeActionPerformed
         // TODO add your handling code here:
         BuscaHospedes busca_hospedes = new BuscaHospedes();
         busca_hospedes.setVisible(true);
-        //hospedes.add(HotelLES.getHospedes());
-        //hospedes.add(new Hospede("a", "b", "c", "d", "e", "f", "g"));
-        //busca_hospedes.exibirTodos(c.todosHospedes);
-       // busca_hospedes.exibirTodos(c.quartos);
-        int room = Integer.parseInt(JOptionPane.showInputDialog("Digite o quarto: "));
-        busca_hospedes.Search(room, c.quartos);
-        
+        String room = JOptionPane.showInputDialog("Informe o quarto do hóspede: ");
+        busca_hospedes.pesquisa(room);
     }//GEN-LAST:event_jButtonBuscaHospedeActionPerformed
 
     private void jButtonEstacionamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstacionamentoActionPerformed
@@ -177,7 +215,7 @@ public class InterfaceHotel extends javax.swing.JFrame {
 
     private void jQuartosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jQuartosActionPerformed
             // TODO add your handling code here:
-            quartos.setVisible(true);
+            //quartos.setVisible(true);
         
     }//GEN-LAST:event_jQuartosActionPerformed
 
@@ -185,15 +223,40 @@ public class InterfaceHotel extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonHospedes1ActionPerformed
 
+    private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+    }//GEN-LAST:event_jButtonSairActionPerformed
+
+    private void jButtonAvaliacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAvaliacaoActionPerformed
+        // TODO add your handling code here:
+        txtAv.setVisible(true);
+        
+        
+    }//GEN-LAST:event_jButtonAvaliacaoActionPerformed
+
+    private void jButtonVerAvaliacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerAvaliacoesActionPerformed
+        // TODO add your handling code here:
+        VerAvaliacoes verAv = new VerAvaliacoes();
+        verAv.jTextVisualizarAvaliacoes.setText(av.imprimeAvaliacao());
+        verAv.setVisible(true);
+        
+    }//GEN-LAST:event_jButtonVerAvaliacoesActionPerformed
+
     /**
      * @param args the command line arguments
      */
+   
+    
     public static void main(String args[]) {
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -210,24 +273,38 @@ public class InterfaceHotel extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(InterfaceHotel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
+        //</editor-fold> */
+            
         /* Cria e mostra o formulário */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new InterfaceHotel().setVisible(true);
+                
             }
+            
         });
+
     }
     
-    private QuartosDisponiveis quartos = new QuartosDisponiveis();
-    private ArrayList<HotelLES> hospedes = new ArrayList<>();
+    //private QuartosDisponiveis quartos = new QuartosDisponiveis();
+    CadastraHospede c = new CadastraHospede(); 
+    public static HotelLDE h = new HotelLDE();
+    public static InterfaceHotel primeiraTela = new InterfaceHotel();
+    public static BuscaHospedes bh = new BuscaHospedes();
+    public static No novo = new No();
+    public static TextoAvaliacao txtAv = new TextoAvaliacao();
+    public static Avaliacoes av = new Avaliacoes();
+    //public static Hospede hospede = new Hospede();
+    //private ArrayList<HotelLES> hospedes = new ArrayList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonAvaliacao;
     private javax.swing.JButton jButtonBuscaHospede;
+    private javax.swing.JButton jButtonCheckout;
     private javax.swing.JButton jButtonEstacionamento;
-    private javax.swing.JButton jButtonHospedes;
     private javax.swing.JButton jButtonHospedes1;
+    private javax.swing.JButton jButtonSair;
+    private javax.swing.JButton jButtonVerAvaliacoes;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JButton jQuartos;
     // End of variables declaration//GEN-END:variables

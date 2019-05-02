@@ -10,7 +10,7 @@ package projetop1estruturas;
  * @author augus
  */
 public class QuartosDisponiveis extends javax.swing.JFrame {
-
+public static HotelLDE hotel = new HotelLDE();
     /**
      * Creates new form QuartosDisponiveis
      */

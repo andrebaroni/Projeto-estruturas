@@ -20,13 +20,18 @@ public class MostraHospedes extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void exibirTodos(HotelLES[] hospedes){
+    /* public void exibirTodos(HotelLES[] hospedes){
         for(int i = 0; i <= hospedes.length-1; i++){
             //jTextArea1.append("Nome: " + hospedes[i].getHospede().getNome() + " - Quarto: " + hospedes[i].getHospede().getQuarto() + "\n");
             if(hospedes[i] != null){
                 jTextArea1.append(hospedes[i].getHospede().getNome() + " - Quarto: " + hospedes[i].getHospede().getQuarto() + "\n");
             }
         }
+    } */
+    
+    public void exibeTodosHospedes(){
+        HotelLDE l = new HotelLDE();
+        l.imprimeLDE();
     }
     /**
      * This method is called from within the constructor to initialize the form.
