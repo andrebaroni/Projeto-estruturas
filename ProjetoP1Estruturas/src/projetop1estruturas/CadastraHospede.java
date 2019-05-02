@@ -5,6 +5,7 @@
  */
 package projetop1estruturas;
 
+import java.util.List;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -543,6 +544,59 @@ public class CadastraHospede extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelefoneActionPerformed
     
+     private boolean validarCampos(String nome, String sobrenome, String telefone, String birth, String cpf,
+                                  String email, String endereco, String numQuarto){
+        List<String> erros = new ArrayList<>();
+        if(nome.isEmpty()){
+            erros.add(MensagensErro.CAMPO_OBRIGATORIO_NOME.getMensagem());
+        }
+        
+        if(sobrenome.isEmpty()){
+            erros.add(MensagensErro.CAMPO_OBRIGATORIO_SOBRENOME.getMensagem());
+        }
+        
+        if(telefone.isEmpty()){
+            erros.add(MensagensErro.CAMPO_OBRIGATORIO_TELEFONE.getMensagem());
+        }
+        
+        if(!birth.isEmpty()){
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            try{
+                format.setLenient(false);
+                format.parse(birth);
+            }catch(Exception e){
+                erros.add(MensagensErro.DATA_INVALIDA.getMensagem());
+            }
+        }
+        
+        if(!cpf.isEmpty()){
+            if(cpf.length() > 11){
+                erros.add(MensagensErro.ERRO_TAMANHO.getMensagem() + cpf);
+            }
+        }else{
+            erros.add(MensagensErro.CAMPO_OBRIGATORIO_CPF.getMensagem());
+        }
+        
+        if(endereco.isEmpty()){
+            erros.add(MensagensErro.CAMPO_OBRIGATORIO_ENDERECO.getMensagem());
+        }
+        if(!numQuarto.isEmpty()){
+            if(Integer.parseInt(numQuarto) > 50){
+                erros.add(MensagensErro.QUANTIDADE_QUARTOS.getMensagem());
+            }
+        }else{
+            erros.add(MensagensErro.CAMPO_OBRIGATORIO_QUARTO.getMensagem());
+        }
+        if(erros.size() > 0){
+            for(int i = 0; i<erros.size(); i ++){
+                JOptionPane.showMessageDialog(null, erros.get(i)); 
+            }
+            return false;
+        }
+        
+        return true;
+     
+    }
     private void cadastrarComanda(){
         int numero = 1;
         comanda.insere(numero++);
@@ -551,51 +605,17 @@ public class CadastraHospede extends javax.swing.JFrame {
         // TODO add your handling code here:
        
         String nome = txtNome.getText();
-        if(nome.isEmpty()){
-            JOptionPane.showMessageDialog(null, MensagensErro.CAMPO_OBRIGATORIO_NOME.getMensagem());
-        }
-        
         String sobrenome = txtSobrenome.getText();
-        if(sobrenome.isEmpty()){
-            JOptionPane.showMessageDialog(null, MensagensErro.CAMPO_OBRIGATORIO_SOBRENOME.getMensagem());
-        }
         String telefone = txtTelefone.getText();
-        if(telefone.isEmpty()){
-            JOptionPane.showMessageDialog(null, MensagensErro.CAMPO_OBRIGATORIO_TELEFONE.getMensagem());
-        }
-        
-        String birth = txtDiaNasc.getText() + "/" + txtMesNasc.getText() + "/" + txtAnoNasc.getText();
-        /*SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
-        try{
-            format.setLenient(false);
-            format.parse(birth);
-        }catch(ParseException e){
-            JOptionPane.showMessageDialog(null,MensagensErro.DATA_INVALIDA.getMensagem());
-        } */
-        
-        String cpf = txtCPF.getText();
-        if(cpf.isEmpty()){
-            JOptionPane.showMessageDialog(null, MensagensErro.CAMPO_OBRIGATORIO_CPF.getMensagem());
-        }
-        
+        String birth = txtDiaNasc.getText() + "/" + txtMesNasc.getText() + "/" + txtAnoNasc.getText(); 
+        String cpf = txtCPF.getText(); 
         String email = txtEmail.getText();
-         if(email.isEmpty()){
-            JOptionPane.showMessageDialog(null, MensagensErro.CAMPO_OBRIGATORIO_EMAIL.getMensagem());
-        }
-        
         String endereco = txtRua.getText() + ", " + txtNumeroCasa.getText() + " - " + txtBairro.getText();
-        if(endereco.isEmpty()){
-             JOptionPane.showMessageDialog(null,MensagensErro.CAMPO_OBRIGATORIO_ENDERECO.getMensagem());
-        }
         String numQuarto = txtNumeroAp.getText();
-        System.out.println("numQuarto: " + numQuarto);
         
-        if(Integer.parseInt(numQuarto) > 50){
-            JOptionPane.showMessageDialog(null, "Existem apenas 50 quartos!");
-            txtNumeroAp.setText("");
-        }
+        boolean validacao = validarCampos(nome,sobrenome,telefone,birth,cpf,email,endereco,numQuarto);
         
-        if(!"".equals(numQuarto) && !"".equals(nome)){
+        if(validacao){
             Hospede hospede = new Hospede(nome, sobrenome, birth, cpf, email, telefone, endereco, numQuarto);
             //hospede.getCPF();
             h.insereLDE(hospede);
@@ -607,10 +627,8 @@ public class CadastraHospede extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Hospede " + nome + " " + sobrenome + " cadastrado!");
             cadastrarComanda();
             setVisible(false);
-        }else if(numQuarto.equals("")){
-            System.out.println("jooj");
-            JOptionPane.showMessageDialog(null, "Digite o número do quarto e o nome do hospede!");
-       
+        }else{
+           JOptionPane.showMessageDialog(null, "Preencha os campos corretamente!");
         }
     }//GEN-LAST:event_cadastrarButtonActionPerformed
 
