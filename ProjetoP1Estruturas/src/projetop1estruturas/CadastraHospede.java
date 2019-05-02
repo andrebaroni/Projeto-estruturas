@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import static projetop1estruturas.InterfaceHotel.h;
 
 
 /**
@@ -58,7 +59,7 @@ public class CadastraHospede extends javax.swing.JFrame {
         txtCEP = new java.awt.TextField();
         jLabel17 = new javax.swing.JLabel();
         txtNumeroCasa = new java.awt.TextField();
-        txtCidade1 = new java.awt.TextField();
+        txtCidade = new java.awt.TextField();
         txtBairro = new java.awt.TextField();
         txtUF = new java.awt.TextField();
         jPanel3 = new javax.swing.JPanel();
@@ -79,6 +80,7 @@ public class CadastraHospede extends javax.swing.JFrame {
         txtNumeroAp = new java.awt.TextField();
         cadastrarButton = new javax.swing.JToggleButton();
         listarQuartos = new javax.swing.JComboBox<>();
+        jButtonVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,6 +98,11 @@ public class CadastraHospede extends javax.swing.JFrame {
 
         txtNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtNome.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
 
         txtSobrenome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtSobrenome.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -260,8 +267,8 @@ public class CadastraHospede extends javax.swing.JFrame {
         txtNumeroCasa.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtNumeroCasa.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
-        txtCidade1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtCidade1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtCidade.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtCidade.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
         txtBairro.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtBairro.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -284,7 +291,7 @@ public class CadastraHospede extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCidade1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(25, 25, 25)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13)
@@ -325,7 +332,7 @@ public class CadastraHospede extends javax.swing.JFrame {
                             .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(txtCEP, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtCidade1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCidade, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 29, Short.MAX_VALUE))
         );
@@ -480,15 +487,19 @@ public class CadastraHospede extends javax.swing.JFrame {
             }
         });
 
+        jButtonVoltar.setText("Voltar");
+        jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(302, 302, 302)
-                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -499,11 +510,19 @@ public class CadastraHospede extends javax.swing.JFrame {
                         .addGap(302, 302, 302)
                         .addComponent(listarQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(302, 302, 302)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonVoltar)
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonVoltar))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -530,27 +549,40 @@ public class CadastraHospede extends javax.swing.JFrame {
     }
     private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
         // TODO add your handling code here:
-        //apagarCampos();
-        
+       
         String nome = txtNome.getText();
         if(nome.isEmpty()){
             JOptionPane.showMessageDialog(null, MensagensErro.CAMPO_OBRIGATORIO_NOME.getMensagem());
         }
+        
         String sobrenome = txtSobrenome.getText();
         if(sobrenome.isEmpty()){
             JOptionPane.showMessageDialog(null, MensagensErro.CAMPO_OBRIGATORIO_SOBRENOME.getMensagem());
         }
         String telefone = txtTelefone.getText();
+        if(telefone.isEmpty()){
+            JOptionPane.showMessageDialog(null, MensagensErro.CAMPO_OBRIGATORIO_TELEFONE.getMensagem());
+        }
+        
         String birth = txtDiaNasc.getText() + "/" + txtMesNasc.getText() + "/" + txtAnoNasc.getText();
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        /*SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
         try{
             format.setLenient(false);
             format.parse(birth);
         }catch(ParseException e){
             JOptionPane.showMessageDialog(null,MensagensErro.DATA_INVALIDA.getMensagem());
-        }     
+        } */
+        
         String cpf = txtCPF.getText();
+        if(cpf.isEmpty()){
+            JOptionPane.showMessageDialog(null, MensagensErro.CAMPO_OBRIGATORIO_CPF.getMensagem());
+        }
+        
         String email = txtEmail.getText();
+         if(email.isEmpty()){
+            JOptionPane.showMessageDialog(null, MensagensErro.CAMPO_OBRIGATORIO_EMAIL.getMensagem());
+        }
+        
         String endereco = txtRua.getText() + ", " + txtNumeroCasa.getText() + " - " + txtBairro.getText();
         if(endereco.isEmpty()){
              JOptionPane.showMessageDialog(null,MensagensErro.CAMPO_OBRIGATORIO_ENDERECO.getMensagem());
@@ -559,17 +591,18 @@ public class CadastraHospede extends javax.swing.JFrame {
         System.out.println("numQuarto: " + numQuarto);
         
         if(Integer.parseInt(numQuarto) > 50){
-            JOptionPane.showMessageDialog(null, "Existem apenas 49 quartos!");
+            JOptionPane.showMessageDialog(null, "Existem apenas 50 quartos!");
             txtNumeroAp.setText("");
         }
         
         if(!"".equals(numQuarto) && !"".equals(nome)){
             Hospede hospede = new Hospede(nome, sobrenome, birth, cpf, email, telefone, endereco, numQuarto);
+            //hospede.getCPF();
             h.insereLDE(hospede);
             //hash.insere(Integer.parseInt(numQuarto), hospede);
             h.imprimeLDE();
-            quarto = new HotelLES(hospede);
-            quartos[Integer.parseInt(numQuarto)] = quarto;
+            //quarto = new HotelLES(hospede);
+            //quartos[Integer.parseInt(numQuarto)] = quarto;
             apagarCampos();
             JOptionPane.showMessageDialog(null, "Hospede " + nome + " " + sobrenome + " cadastrado!");
             cadastrarComanda();
@@ -577,8 +610,8 @@ public class CadastraHospede extends javax.swing.JFrame {
         }else if(numQuarto.equals("")){
             System.out.println("jooj");
             JOptionPane.showMessageDialog(null, "Digite o número do quarto e o nome do hospede!");
+       
         }
-        
     }//GEN-LAST:event_cadastrarButtonActionPerformed
 
     private void txtNumeroApActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroApActionPerformed
@@ -590,6 +623,15 @@ public class CadastraHospede extends javax.swing.JFrame {
         //teste
         listarQuartos.addItem("Quarto 1");
     }//GEN-LAST:event_listarQuartosActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+    }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     public void apagarCampos(){
         txtNome.setText("");
@@ -603,7 +645,7 @@ public class CadastraHospede extends javax.swing.JFrame {
         txtRua.setText("");
         txtNumeroCasa.setText("");
         txtBairro.setText("");
-        txtCidade1.setText("");
+        txtCidade.setText("");
         txtUF.setText("");
         txtCEP.setText("");
         txtDiaReserva.setText("");
@@ -613,6 +655,8 @@ public class CadastraHospede extends javax.swing.JFrame {
         txtHoraCheckout.setText("");
         txtQuantidadeHospedes1.setText("");
         txtNumeroAp.setText("");
+        txtCidade.setText("");
+        txtUF.setText("");
     }
     /**
      * @param args the command line arguments
@@ -649,13 +693,14 @@ public class CadastraHospede extends javax.swing.JFrame {
         });
     }
     public Comanda comanda = new Comanda();
-    public HotelLDE h = new HotelLDE();
+    //public HotelLDE h = new HotelLDE();
     public Hash hash = new Hash();
     public HotelLES quarto;
     public HotelLES quartos[] = new HotelLES[50];
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton cadastrarButton;
+    private javax.swing.JButton jButtonVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -690,7 +735,7 @@ public class CadastraHospede extends javax.swing.JFrame {
     private java.awt.TextField txtBairro;
     private java.awt.TextField txtCEP;
     private java.awt.TextField txtCPF;
-    private java.awt.TextField txtCidade1;
+    private java.awt.TextField txtCidade;
     private java.awt.TextField txtDiaNasc;
     private java.awt.TextField txtDiaReserva;
     private java.awt.TextField txtEmail;

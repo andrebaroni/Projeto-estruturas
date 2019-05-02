@@ -7,4 +7,5 @@ package projetop1estruturas;
 public class No {
   public Hospede pessoa;
   public No prox;
+  public String texto;
 }

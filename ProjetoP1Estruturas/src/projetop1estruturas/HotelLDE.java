@@ -5,6 +5,12 @@
  */
 package projetop1estruturas;
 
+//import static projetop1estruturas.HotelLDE.atual;
+
+import static projetop1estruturas.InterfaceHotel.av;
+import static projetop1estruturas.InterfaceHotel.novo;
+
+
 /**
  *
  * @author André Baroni
@@ -19,7 +25,7 @@ public class HotelLDE {
   }
 
   public void insereLDE(Hospede hospede){
-    No novo = new No();
+    //No novo = new No();
     novo.pessoa = hospede;
     novo.prox = null;
     No anterior = null;
@@ -39,7 +45,7 @@ public class HotelLDE {
     n++;
   }
   
-  public boolean remove(String x){
+  public boolean removeHospede(String x){
     No proximo = primeiro;
     No anterior = null;
 
@@ -59,11 +65,24 @@ public class HotelLDE {
     }
     return false;
   }
+  
+  public No buscaHospede(String quarto){
+      No atual = primeiro;
+      while(atual != null){
+          if(quarto.equals(atual.pessoa.getQuarto())){
+              return atual;
+          }
+          atual = atual.prox;
+      }
+      return null;
+  }
 
   public void imprimeLDE(){
     No temp = primeiro;
     while(temp != null){
-      System.out.println(temp.pessoa.getNome() + " " + temp.pessoa.getSobrenome() + " " + temp.pessoa.getQuarto());
+      System.out.println(temp.pessoa.getNome() + " " + temp.pessoa.getSobrenome() + " " + temp.pessoa.getQuarto() + " " + temp.pessoa.getCPF() + " " + temp.pessoa.getEmail() + " " + temp.pessoa.getTelefone() + " " + temp.pessoa.getEndereco() + " " + temp.pessoa.getDataNascimento());
+      System.out.print("avaliacao: ");
+      av.imprimeAvaliacao();
       temp = temp.prox;
     }
   }
