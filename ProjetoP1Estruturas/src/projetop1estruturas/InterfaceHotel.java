@@ -5,9 +5,9 @@
  */
 package projetop1estruturas;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import static projetop1estruturas.CadastraHospede.quartosLES;
 
 /**
  *
@@ -35,7 +35,7 @@ public class InterfaceHotel extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButtonCheckout = new javax.swing.JButton();
         jButtonBuscaHospede = new javax.swing.JButton();
-        jButtonEstacionamento = new javax.swing.JButton();
+        jButtonFilaReserva = new javax.swing.JButton();
         jQuartos = new javax.swing.JButton();
         jButtonSair = new javax.swing.JButton();
         jButtonAvaliacao = new javax.swing.JButton();
@@ -77,12 +77,12 @@ public class InterfaceHotel extends javax.swing.JFrame {
             }
         });
 
-        jButtonEstacionamento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButtonEstacionamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/parked-car.png"))); // NOI18N
-        jButtonEstacionamento.setText("  Estacionamento");
-        jButtonEstacionamento.addActionListener(new java.awt.event.ActionListener() {
+        jButtonFilaReserva.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonFilaReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/parked-car.png"))); // NOI18N
+        jButtonFilaReserva.setText("Fila Reserva");
+        jButtonFilaReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEstacionamentoActionPerformed(evt);
+                jButtonFilaReservaActionPerformed(evt);
             }
         });
 
@@ -168,7 +168,7 @@ public class InterfaceHotel extends javax.swing.JFrame {
                             .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(231, 231, 231)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonEstacionamento, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonFilaReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonCheckout, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonVerAvaliacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -191,7 +191,7 @@ public class InterfaceHotel extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonEstacionamento, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonFilaReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCheckout, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -228,6 +228,8 @@ public class InterfaceHotel extends javax.swing.JFrame {
         String sobrenome = busca.pessoa.getSobrenome();
         h.removeHospede(room);
         JOptionPane.showMessageDialog(null, "Check-out do hóspede " + nome + " " + sobrenome + " realizado com sucesso!");
+        c.getjComboBox().addItem("Quarto nº " +
+                String.valueOf(quartosLES.insereQuartosLES(Integer.parseInt(room), c.QTD_QUARTOS, c.quartosDisponiveis)));
     }//GEN-LAST:event_jButtonCheckoutActionPerformed
 
     private void jButtonBuscaHospedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscaHospedeActionPerformed
@@ -238,9 +240,14 @@ public class InterfaceHotel extends javax.swing.JFrame {
         busca_hospedes.pesquisa(room);
     }//GEN-LAST:event_jButtonBuscaHospedeActionPerformed
 
-    private void jButtonEstacionamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstacionamentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonEstacionamentoActionPerformed
+    private void jButtonFilaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFilaReservaActionPerformed
+        //for(int i = 0; i < c.contadorFila; i++){
+            //c.filaReserva[i].getHospede().getNome();
+            mostraFila MostraFila = new mostraFila();
+            MostraFila.mostraFilaReserva(c.filaReserva);
+            MostraFila.setVisible(true);
+        //}
+    }//GEN-LAST:event_jButtonFilaReservaActionPerformed
 
     private void jQuartosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jQuartosActionPerformed
             // TODO add your handling code here:
@@ -338,7 +345,7 @@ public class InterfaceHotel extends javax.swing.JFrame {
     public int n = 0;
     public int print[] = new int[n+1];
     Fila f = new Fila();
-    CadastraHospede c = new CadastraHospede(); 
+    public static CadastraHospede c = new CadastraHospede(); 
     public static mostraFila m = new mostraFila();
     public static HotelLDE h = new HotelLDE();
     public static InterfaceHotel primeiraTela = new InterfaceHotel();
@@ -346,6 +353,7 @@ public class InterfaceHotel extends javax.swing.JFrame {
     public static No novo = new No();
     public static TextoAvaliacao txtAv = new TextoAvaliacao();
     public static Avaliacoes av = new Avaliacoes();
+    
     //public static Hospede hospede = new Hospede();
     //private ArrayList<HotelLES> hospedes = new ArrayList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -356,7 +364,7 @@ public class InterfaceHotel extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAvaliacao;
     private javax.swing.JButton jButtonBuscaHospede;
     private javax.swing.JButton jButtonCheckout;
-    private javax.swing.JButton jButtonEstacionamento;
+    private javax.swing.JButton jButtonFilaReserva;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonVerAvaliacoes;
     private javax.swing.JLabel jLabelNome;

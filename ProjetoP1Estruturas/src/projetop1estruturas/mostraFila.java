@@ -5,6 +5,10 @@
  */
 package projetop1estruturas;
 
+import static projetop1estruturas.InterfaceHotel.c;
+
+
+
 /**
  *
  * @author André Baroni
@@ -17,13 +21,21 @@ public class mostraFila extends javax.swing.JFrame {
     public mostraFila() {
         initComponents();
     }
+    
+    public void mostraFilaReserva(Fila[] f ){
+        for(int i = 0; i < c.contadorFila ; i++ ){
+          mostraTexto.append("Nome: " +f[i].getHospede().getNome() + "\n"
+                              +"Email: " + f[i].getHospede().getEmail()+ "\n"
+                              +"Telefone: " + f[i].getHospede().getTelefone() + "\n" + "\n");
+        }
+    }
 
     public void mostra(Fila fila){
       
         for(int i = fila.getI(); i != fila.getF(); i = (i+1)% fila.getMAX()){
             //jTextArea1.append("Nome: " + hospedes[i].getHospede().getNome() + " - Quarto: " + hospedes[i].getHospede().getQuarto() + "\n");
             if(fila.getV()[i] != 0){
-                show.append(fila.getV()[i] + " - ");
+                mostraTexto.append(fila.getV()[i] + " - ");
             }
         }
         //show.append(null);
@@ -38,14 +50,14 @@ public class mostraFila extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        show = new javax.swing.JTextArea();
+        mostraTexto = new javax.swing.JTextArea();
         voltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        show.setColumns(20);
-        show.setRows(5);
-        jScrollPane1.setViewportView(show);
+        mostraTexto.setColumns(20);
+        mostraTexto.setRows(5);
+        jScrollPane1.setViewportView(mostraTexto);
 
         voltar.setText("Voltar");
         voltar.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +97,7 @@ public class mostraFila extends javax.swing.JFrame {
     private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        show.setText("");
+        mostraTexto.setText("");
     }//GEN-LAST:event_voltarActionPerformed
 
     /**
@@ -122,10 +134,10 @@ public class mostraFila extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea show;
+    private javax.swing.JTextArea mostraTexto;
     private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
 }

@@ -17,6 +17,7 @@ public enum MensagensErro {
     CAMPO_OBRIGATORIO_CPF("Por favor, informar CPF do hóspede"),
     ERRO_TAMANHO("Campo com tamanho inválido!"),
     QUANTIDADE_QUARTOS("Existem apenas 50 quartos"),
+    QUARTOS_OCUPADOS("Todos os quartos estão ocupados"),
     CAMPO_OBRIGATORIO_QUARTO("Por favor, preencha o número do quarto do hóspede");
     
 
