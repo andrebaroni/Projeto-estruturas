@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  * @author André Baroni
  */
 public class Fila {
+    private Hospede hospede;
     private static final int MAX = 50;
     public int i, f, senhaApagada;
     public int v[] = new int[MAX];
@@ -25,6 +26,15 @@ public class Fila {
         this.f = i;
     }
 
+    public Hospede getHospede() {
+        return hospede;
+    }
+
+    public void setHospede(Hospede hospede) {
+        this.hospede = hospede;
+    }
+    
+    
     public int[] getV() {
         return v;
     }

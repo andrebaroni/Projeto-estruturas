@@ -30,6 +30,16 @@ public class Hospede {
         this.endereco = endereco;
         this.quarto = quarto;
     }
+    
+        public Hospede(String nome, String sobrenome, String dataNascimento, String CPF, String email, String telefone, String endereco) {
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.dataNascimento = dataNascimento;
+        this.CPF = CPF;
+        this.email = email;
+        this.telefone = telefone;
+        this.endereco = endereco;
+    }
 
     public String getQuarto() {
         return quarto;
