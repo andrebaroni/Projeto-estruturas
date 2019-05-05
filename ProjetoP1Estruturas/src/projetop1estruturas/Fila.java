@@ -9,6 +9,7 @@ import java.util.Arrays;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author André Baroni
@@ -33,8 +34,7 @@ public class Fila {
     public void setHospede(Hospede hospede) {
         this.hospede = hospede;
     }
-    
-    
+     
     public int[] getV() {
         return v;
     }
@@ -82,9 +82,17 @@ public class Fila {
         return true;
     }
     
+    //Movimenta a fila caso tenha um checkout de hospede
+    public void desenfileiraHospede(Fila filaReserva[], int tamanhoFila){
+        for(int i = 0; i<tamanhoFila ; i++){
+            filaReserva[i] = filaReserva[i+1];
+            
+        }
+        filaReserva[tamanhoFila]= null;
+    }
     boolean desenfileira(){
         if(i == f){
-            System.out.println("Fila vazia");
+            //System.out.println("Fila vazia");
             JOptionPane.showMessageDialog(null, "Fila vazia");
             return false;
         }

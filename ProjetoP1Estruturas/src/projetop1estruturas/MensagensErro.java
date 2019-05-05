@@ -18,6 +18,7 @@ public enum MensagensErro {
     ERRO_TAMANHO("Campo com tamanho inválido!"),
     QUANTIDADE_QUARTOS("Existem apenas 50 quartos"),
     QUARTOS_OCUPADOS("Todos os quartos estão ocupados"),
+    CAMPO_NUMERICO("Campo só aceita números"),
     CAMPO_OBRIGATORIO_QUARTO("Por favor, preencha o número do quarto do hóspede");
     
 

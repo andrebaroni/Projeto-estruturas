@@ -575,6 +575,8 @@ public class CadastraHospede extends javax.swing.JFrame {
     private boolean validarCampos(String nome, String sobrenome, String telefone, String birth, String cpf,
             String email, String endereco) {
         List<String> erros = new ArrayList<>();
+        boolean campoNumerico = true;
+        
         if (nome.isEmpty()) {
             erros.add(MensagensErro.CAMPO_OBRIGATORIO_NOME.getMensagem());
         }
@@ -585,6 +587,17 @@ public class CadastraHospede extends javax.swing.JFrame {
 
         if (telefone.isEmpty()) {
             erros.add(MensagensErro.CAMPO_OBRIGATORIO_TELEFONE.getMensagem());
+        }
+        else{
+            char[] telefoneChar = telefone.toCharArray();
+            for(int i = 0; i <telefoneChar.length; i++){
+                if((telefoneChar[i] >= 'a' && telefoneChar[i] <= 'z') || (telefoneChar[i] >= 'A' && telefoneChar[i] <= 'Z')){
+                    campoNumerico = false;
+                }
+            }
+            if(!campoNumerico){
+                erros.add(MensagensErro.CAMPO_NUMERICO.getMensagem() + " " + telefone);
+            }
         }
 
         if (!birth.isEmpty()) {
@@ -598,7 +611,17 @@ public class CadastraHospede extends javax.swing.JFrame {
         }
 
         if (!cpf.isEmpty()) {
-            if (cpf.length() > 11) {
+            char[] cpfCHAr = cpf.toCharArray();
+            for(int i = 0; i <cpfCHAr.length; i++){
+                if((cpfCHAr[i] >= 'a' && cpfCHAr[i] <= 'z') || (cpfCHAr[i] >= 'A' && cpfCHAr[i] <= 'Z')){
+                    campoNumerico = false;
+                }
+            }
+            if(!campoNumerico){
+                erros.add(MensagensErro.CAMPO_NUMERICO.getMensagem() +" " + cpf);
+            }
+            
+            else if (cpf.length() > 11) {
                 erros.add(MensagensErro.ERRO_TAMANHO.getMensagem() + cpf);
             }
         } else {
@@ -608,13 +631,6 @@ public class CadastraHospede extends javax.swing.JFrame {
         if (endereco.isEmpty()) {
             erros.add(MensagensErro.CAMPO_OBRIGATORIO_ENDERECO.getMensagem());
         }
-        /*if(!numQuarto.isEmpty()){
-            if(Integer.parseInt(numQuarto) > 50){
-                erros.add(MensagensErro.QUANTIDADE_QUARTOS.getMensagem());
-            }
-        }else{
-            erros.add(MensagensErro.CAMPO_OBRIGATORIO_QUARTO.getMensagem());
-        }*/
 
         if (erros.size() > 0) {
             for (int i = 0; i < erros.size(); i++) {
@@ -636,7 +652,6 @@ public class CadastraHospede extends javax.swing.JFrame {
         String cpf = txtCPF.getText();
         String email = txtEmail.getText();
         String endereco = txtRua.getText() + ", " + txtNumeroCasa.getText() + " - " + txtBairro.getText();
-        //txtNumeroAp.setText(String.valueOf(jComboBox.getSelectedIndex()));
         String numQuarto = String.valueOf(jComboBox.getSelectedIndex());
 
         boolean validacao = validarCampos(nome, sobrenome, telefone, birth, cpf, email, endereco);
@@ -736,12 +751,8 @@ public class CadastraHospede extends javax.swing.JFrame {
         txtDiaReserva.setText("");
         txtMesReserva1.setText("");
         txtAnoReserva.setText("");
-        //txtHoraCheckin.setText("");
         txtHoraCheckout.setText("");
         txtQuantidadeHospedes1.setText("");
-        //txtNumeroAp.setText("");
-        txtCidade.setText("");
-        txtUF.setText("");
     }
 
     /**
