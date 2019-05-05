@@ -210,18 +210,28 @@ public class InterfaceHotel extends javax.swing.JFrame {
     private void jButtonCheckoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCheckoutActionPerformed
         // TODO add your handling code here:
         String room = JOptionPane.showInputDialog("Digite o quarto: ");
-        if (room.equals("") || room.equals(" ")) {
-            JOptionPane.showMessageDialog(null, "Informe um quarto");
-        } else if (Integer.parseInt(room) >= 1 && Integer.parseInt(room) <= 50) {
-            No busca = hash.buscaHash(Integer.parseInt(room), h);
-            String nome = busca.pessoa.getNome();
-            String sobrenome = busca.pessoa.getSobrenome();
-            hash.removeHash(Integer.parseInt(room));
-            JOptionPane.showMessageDialog(null, "Check-out do hóspede " + nome + " " + sobrenome + " realizado com sucesso!");
-            c.getjComboBox().addItem("Quarto nº "
-                    + String.valueOf(quartosLES.insereQuartosLES(Integer.parseInt(room), c.QTD_QUARTOS, c.quartosDisponiveis)));
-        } else {
-            JOptionPane.showMessageDialog(null, "Informe um quarto2222");
+        try{
+            if (room.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Informe um quarto");
+            } else if (Integer.parseInt(room) >= 1 && Integer.parseInt(room) <= 50) {
+                No busca = hash.buscaHash(Integer.parseInt(room), h);
+                String nome = busca.pessoa.getNome();
+                String sobrenome = busca.pessoa.getSobrenome();
+                hash.removeHash(Integer.parseInt(room));
+                JOptionPane.showMessageDialog(null, "Check-out do hóspede " + nome + " " + sobrenome + " realizado com sucesso!");
+                c.getjComboBox().addItem("Quarto nº "
+                        + String.valueOf(quartosLES.insereQuartosLES(Integer.parseInt(room), c.QTD_QUARTOS, c.quartosDisponiveis)));
+                if(c.contadorFila > 0){
+                    c.filaReserva[0].getHospede().setQuarto(room);
+                    hash.insereHash(Integer.parseInt(room), c.filaReserva[0].getHospede(), h);
+                    JOptionPane.showMessageDialog(null,"Adicionou hospede "+c.filaReserva[0].getHospede().getNome()+
+                            " que estava na fila de espera no quarto " + room);
+                    c.getjComboBox().removeItemAt(Integer.parseInt(room));
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Informe um quarto");
+            }
+        }catch(NullPointerException e){
         }
     }//GEN-LAST:event_jButtonCheckoutActionPerformed
 
