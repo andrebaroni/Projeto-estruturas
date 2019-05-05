@@ -46,7 +46,7 @@ public class Quartos {
         this.disponivel = disponivel;
     }
     
-    //Insere LES
+    //funcao que insere quartos na LES
     public int insereQuartosLES(int x, int maxQuartos, Quartos v[]){    
         if(numero == maxQuartos){
             JOptionPane.showMessageDialog(null, MensagensErro.QUARTOS_OCUPADOS.getMensagem());
@@ -59,7 +59,6 @@ public class Quartos {
            
             v[numero] = new Quartos();
             v[numero].setNumQuarto(x);
-            //System.out.println("INSERIU LES" + v[numero].getNumQuarto());
             int retornaQuarto = v[numero].getNumQuarto();
             numero++;
             return retornaQuarto;

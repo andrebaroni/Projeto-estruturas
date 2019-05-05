@@ -5,12 +5,6 @@
  */
 package projetop1estruturas;
 
-//import static projetop1estruturas.HotelLDE.atual;
-
-import static projetop1estruturas.InterfaceHotel.av;
-import static projetop1estruturas.InterfaceHotel.novo;
-
-
 /**
  *
  * @author André Baroni
@@ -23,68 +17,73 @@ public class HotelLDE {
     this.primeiro = null;
     this.n = 0;
   }
-
+/**
+ * Implementação da insereLDE, essa função recebe um hóspede e insere esse hospede na LDE
+ * 
+ */
   public No insereLDE(Hospede hospede){
-    //No novo = new No();
-    novo.pessoa = hospede;
-    novo.prox = null;
+    No novo = new No();
+    novo.setPessoa(hospede);
+    novo.setProx(null);
     No anterior = null;
     No proximo = primeiro;
 
     while(proximo != null){ 
       anterior = proximo;
-      proximo = proximo.prox;
+      proximo = proximo.getProx();
     }
 
     if(anterior != null){
-      anterior.prox = novo;
+      anterior.setProx(novo);
     }else{
       primeiro = novo;
     }
-    novo.prox = proximo;
+    novo.setProx(proximo);
     n++;
     return novo;
   }
   
+  /** essa função quando chamada, remove o hospede de acordo com o quarto passado por parametro
+   */
   public boolean removeHospede(String x){
     No proximo = primeiro;
     No anterior = null;
 
     while(primeiro != null && proximo != null){
-      if(x.equals(proximo.pessoa.getQuarto())){
+      if(x.equals(proximo.getPessoa().getQuarto())){
         if(anterior != null){
-          anterior.prox = proximo.prox;
+          anterior.setProx(proximo.getProx());
         }else{
-          primeiro = proximo.prox;
+          primeiro = proximo.getProx();
         }
         proximo = null;
         n--;
         return true;
       }
       anterior = proximo;
-      proximo = proximo.prox;
+      proximo = proximo.getProx();
     }
     return false;
   }
   
+  //essa função quando chamada, busca o hospede de acordo com o quarto passado por parametro
   public No buscaHospede(String quarto){
       No atual = primeiro;
       while(atual != null){
-          if(quarto.equals(atual.pessoa.getQuarto())){
+          if(quarto.equals(atual.getPessoa().getQuarto())){
               return atual;
           }
-          atual = atual.prox;
+          atual = atual.getProx();
       }
       return null;
   }
 
+  //função que imprime a LDE, usada apenas para testes
   public void imprimeLDE(){
     No temp = primeiro;
     while(temp != null){
-      System.out.println(temp.pessoa.getNome() + " " + temp.pessoa.getSobrenome() + " " + temp.pessoa.getQuarto() + " " + temp.pessoa.getCPF() + " " + temp.pessoa.getEmail() + " " + temp.pessoa.getTelefone() + " " + temp.pessoa.getEndereco() + " " + temp.pessoa.getDataNascimento());
-      //System.out.print("avaliacao: "); ARRUMAR 
-      //av.imprimeAvaliacao(); 
-      temp = temp.prox;
+      System.out.println(temp.getPessoa().getNome() + " " + temp.getPessoa().getSobrenome() + " " + temp.getPessoa().getQuarto() + " " + temp.getPessoa().getCPF() + " " + temp.getPessoa().getEmail() + " " + temp.getPessoa().getTelefone() + " " + temp.getPessoa().getEndereco() + " " + temp.getPessoa().getDataNascimento());
+      temp = temp.getProx();
     }
   }
 }

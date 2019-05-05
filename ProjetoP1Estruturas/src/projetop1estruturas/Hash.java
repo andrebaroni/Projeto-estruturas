@@ -24,8 +24,6 @@ public class Hash {
             System.out.println("MODULO " + mod);
             l.insereLDE(hospede);
             vetorHospedes[mod] = l;
-            //JOptionPane.showMessageDialog(null, "Olha o vetor " + vetorHospedes[mod] + "modulo = " + mod);
-            //JOptionPane.showMessageDialog(null, "Olha o nome " + vetorHospedes[mod].buscaHospede("1").pessoa.getNome());
             numItens++;
         }
     }

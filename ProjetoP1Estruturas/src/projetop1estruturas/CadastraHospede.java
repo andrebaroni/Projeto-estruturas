@@ -9,8 +9,6 @@ import java.awt.TextField;
 import java.util.List;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import static projetop1estruturas.InterfaceHotel.h;
@@ -83,9 +81,8 @@ public class CadastraHospede extends javax.swing.JFrame {
         txtHoraCheckout = new java.awt.TextField();
         jLabel25 = new javax.swing.JLabel();
         cadastrarButton = new javax.swing.JToggleButton();
-        jComboBox = new javax.swing.JComboBox<>();
+        jComboBox = new javax.swing.JComboBox<String>();
         jButtonVoltar = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setText("Cadastro de hóspedes ");
@@ -277,6 +274,11 @@ public class CadastraHospede extends javax.swing.JFrame {
 
         txtCidade.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtCidade.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtCidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCidadeActionPerformed(evt);
+            }
+        });
 
         txtBairro.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtBairro.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -404,7 +406,7 @@ public class CadastraHospede extends javax.swing.JFrame {
         });
 
         jComboBox.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um quarto" }));
+        jComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione um quarto" }));
 
         jButtonVoltar.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jButtonVoltar.setText("Voltar");
@@ -446,7 +448,9 @@ public class CadastraHospede extends javax.swing.JFrame {
                                         .addComponent(jLabel18)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtAnoReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(124, 124, 124)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -507,9 +511,6 @@ public class CadastraHospede extends javax.swing.JFrame {
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um mês", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -523,13 +524,8 @@ public class CadastraHospede extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(475, 475, 475))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(388, 388, 388))))
+                .addComponent(jLabel1)
+                .addGap(475, 475, 475))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -537,9 +533,7 @@ public class CadastraHospede extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(40, 40, 40)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -553,18 +547,11 @@ public class CadastraHospede extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void quartosDisponiveis() {
-        //DefaultListModel lista = new DefaultListModel();
-        //Quartos quartosLES = new Quartos();
-
         for (int i = 1; i < QTD_QUARTOS; i++) {
             quartosDisponiveis[i] = new Quartos();
             quartosDisponiveis[i].setNumQuarto(i);
-            //System.out.println("======" + quartosDisponiveis[i].getNumQuarto());
-            //quartosLES.insereQuartosLES(quartosDisponiveis[i].getNumQuarto(), QTD_QUARTOS, quartosDisponiveis);
             jComboBox.addItem("Quarto nº " + quartosLES.insereQuartosLES(quartosDisponiveis[i].getNumQuarto(), QTD_QUARTOS, quartosDisponiveis));
-            //lista.addElement("Quarto nº " + i);
         }
-        //jListaQuartos.setModel(lista);
     }
 
     private void txtTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefoneActionPerformed
@@ -643,6 +630,8 @@ public class CadastraHospede extends javax.swing.JFrame {
 
     }
 
+   
+    //função para cadastrar novo hospede
     private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
         // TODO add your handling code here:
         String nome = txtNome.getText();
@@ -655,7 +644,8 @@ public class CadastraHospede extends javax.swing.JFrame {
         String numQuarto = String.valueOf(jComboBox.getSelectedIndex());
 
         boolean validacao = validarCampos(nome, sobrenome, telefone, birth, cpf, email, endereco);
-
+        
+        //condicao para validar se os campos estao sendo preenchidos corretamente, se sim, libera para cadastrar
         if (validacao && jComboBox.getModel().getSize() > 1) {
             if (!numQuarto.isEmpty()) {
                 Hospede hospede = new Hospede(nome, sobrenome, birth, cpf, email, telefone, endereco, numQuarto);
@@ -666,33 +656,29 @@ public class CadastraHospede extends javax.swing.JFrame {
                 quartosDisponiveis[contador] = new Quartos();
                 quartosDisponiveis[contador].setHospede(hospede);
                 quartosDisponiveis[contador].setDisponivel(false);
-                //txtNumeroAp.setText(jListaQuartos.getSelectedValue());
-                //System.out.println("Colocou hospede na LES" +  txtNumeroAp.getText());
                 System.out.println("Colocou hospede na LES" + quartosDisponiveis[0].getHospede());
-                //((DefaultListModel)jListaQuartos.getModel()).remove(jListaQuartos.getSelectedIndex());
                 jComboBox.removeItemAt(jComboBox.getSelectedIndex());
                 apagarCampos();
                 JOptionPane.showMessageDialog(null, "Hospede " + nome + " " + sobrenome + " cadastrado!");
                 contador++;
                 setVisible(false);
-                if (Integer.parseInt(numQuarto) > 50) {
+                if (Integer.parseInt(numQuarto) > 50){
                     JOptionPane.showMessageDialog(null, MensagensErro.QUANTIDADE_QUARTOS.getMensagem());
                 }
             } else {
                 JOptionPane.showMessageDialog(null, MensagensErro.CAMPO_OBRIGATORIO_QUARTO.getMensagem());
             }
 
-        } else if (jComboBox.getModel().getSize() == 1) {
+        } else if(jComboBox.getModel().getSize() == 1) {
             boolean valida = validarCampos(nome, sobrenome, telefone, birth, cpf, email, endereco);
             if (valida) {
                 filaReserva();
                 contadorFila++;
             }
-
-            //JOptionPane.showMessageDialog(null, "Preencha os campos corretamente!");
         }
     }//GEN-LAST:event_cadastrarButtonActionPerformed
 
+    //função que adicionada novo hospede a fila reserva caso todos os quartos estejam cheios
     private void filaReserva() {
         filaReserva[contadorFila] = new Fila();
         Hospede hospede = new Hospede(txtNome.getText(), txtSobrenome.getText(),
@@ -729,10 +715,40 @@ public class CadastraHospede extends javax.swing.JFrame {
         this.txtHoraCheckin = txtHoraCheckin;
     }
 
+    public TextField getTxtAnoReserva() {
+        return txtAnoReserva;
+    }
+
+    public void setTxtAnoReserva(TextField txtAnoReserva) {
+        this.txtAnoReserva = txtAnoReserva;
+    }
+
+    public TextField getTxtDiaReserva() {
+        return txtDiaReserva;
+    }
+
+    public void setTxtDiaReserva(TextField txtDiaReserva) {
+        this.txtDiaReserva = txtDiaReserva;
+    }
+
+    public TextField getTxtMesReserva1() {
+        return txtMesReserva1;
+    }
+
+    public void setTxtMesReserva1(TextField txtMesReserva1) {
+        this.txtMesReserva1 = txtMesReserva1;
+    }
+    
+
     private void txtSobrenomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSobrenomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSobrenomeActionPerformed
 
+    private void txtCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCidadeActionPerformed
+
+    //função para apagar campos
     public void apagarCampos() {
         txtNome.setText("");
         txtSobrenome.setText("");
@@ -790,11 +806,11 @@ public class CadastraHospede extends javax.swing.JFrame {
         });
     }
     public static Quartos quartosLES = new Quartos();
-    public Fila filaReserva[] = new Fila[10];
+    public Fila filaReserva[] = new Fila[10]; //10 é o tamanho da fila de reserva
     private int n = 0;
     public int contadorFila = 0;
     private int contador = 0;
-    public int QTD_QUARTOS = 2; //São 50 quartos disponíveis no Hotel
+    public int QTD_QUARTOS = 5; //São 50 quartos disponíveis no Hotel
     public Quartos quartosDisponiveis[] = new Quartos[QTD_QUARTOS];
 
     public JComboBox<String> getjComboBox() {
@@ -809,7 +825,6 @@ public class CadastraHospede extends javax.swing.JFrame {
     private javax.swing.JToggleButton cadastrarButton;
     private javax.swing.JButton jButtonVoltar;
     private javax.swing.JComboBox<String> jComboBox;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
