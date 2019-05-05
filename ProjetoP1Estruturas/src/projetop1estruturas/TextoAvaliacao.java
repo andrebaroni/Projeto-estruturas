@@ -36,8 +36,6 @@ public class TextoAvaliacao extends javax.swing.JFrame {
         jButtonSair = new javax.swing.JButton();
         jButtonSalvar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jTextAvaliacao.setColumns(20);
         jTextAvaliacao.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
         jTextAvaliacao.setLineWrap(true);

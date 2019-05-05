@@ -53,8 +53,6 @@ public class mostraFila extends javax.swing.JFrame {
         mostraTexto = new javax.swing.JTextArea();
         voltar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         mostraTexto.setColumns(20);
         mostraTexto.setRows(5);
         jScrollPane1.setViewportView(mostraTexto);
@@ -92,6 +90,7 @@ public class mostraFila extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed

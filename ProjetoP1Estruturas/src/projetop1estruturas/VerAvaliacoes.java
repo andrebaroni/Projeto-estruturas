@@ -5,6 +5,10 @@
  */
 package projetop1estruturas;
 
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import static projetop1estruturas.InterfaceHotel.av;
+
 /**
  *
  * @author Eduardo Baptista
@@ -27,16 +31,11 @@ public class VerAvaliacoes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextVisualizarAvaliacoes = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jButtonVoltar = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jTextVisualizarAvaliacoes.setColumns(20);
-        jTextVisualizarAvaliacoes.setRows(5);
-        jScrollPane1.setViewportView(jTextVisualizarAvaliacoes);
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaAvaliacoes = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Avaliações dos hóspedes");
@@ -48,36 +47,52 @@ public class VerAvaliacoes extends javax.swing.JFrame {
             }
         });
 
+        jTextAreaAvaliacoes.setColumns(20);
+        jTextAreaAvaliacoes.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaAvaliacoes);
+
+        jButton1.setText("Limpar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 746, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(83, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(258, 258, 258)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonVoltar))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonVoltar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(186, 186, 186)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 649, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 28, Short.MAX_VALUE)))
+                        .addComponent(jButton1)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addComponent(jButtonVoltar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jButtonVoltar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
 
         pack();
@@ -89,6 +104,27 @@ public class VerAvaliacoes extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        av.removeAvaliacao();
+       //VerAvaliacoes verAv = new VerAvaliacoes();
+       //verAv.dispose();
+       //verAv.setjTextAreaAvaliacoes(verAv.getjTextAreaAvaliacoes());
+       //verAv.getjTextAreaAvaliacoes().setText("");
+       //verAv.setjTextAreaAvaliacoes(verAv.getjTextAreaAvaliacoes());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public JTextArea getjTextAreaAvaliacoes() {
+        return jTextAreaAvaliacoes;
+    }
+
+    public void setjTextAreaAvaliacoes(JTextArea jTextAreaAvaliacoes) {
+        this.jTextAreaAvaliacoes = jTextAreaAvaliacoes;
+    }
+    
+    
+
+    
     /**
      * @param args the command line arguments
      */
@@ -125,9 +161,10 @@ public class VerAvaliacoes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTextArea jTextVisualizarAvaliacoes;
+    private javax.swing.JTextArea jTextAreaAvaliacoes;
     // End of variables declaration//GEN-END:variables
 }

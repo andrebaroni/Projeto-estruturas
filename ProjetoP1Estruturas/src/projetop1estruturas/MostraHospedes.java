@@ -46,8 +46,6 @@ public class MostraHospedes extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         backButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);

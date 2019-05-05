@@ -9,15 +9,13 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import static projetop1estruturas.InterfaceHotel.bh;
 import static projetop1estruturas.InterfaceHotel.h;
+import static projetop1estruturas.InterfaceHotel.hash;
 import static projetop1estruturas.InterfaceHotel.novo;
 import static projetop1estruturas.InterfaceHotel.primeiraTela;
 
-
-
-
 /**
  *
- * @author André Baroni
+ * @author André Baroni, Eduardo Baptista, Leticia Penha
  */
 public class BuscaHospedes extends javax.swing.JFrame {
 
@@ -99,6 +97,11 @@ public class BuscaHospedes extends javax.swing.JFrame {
         jLabel10.setText("Sobrenome:");
 
         jTextFieldNome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNomeActionPerformed(evt);
+            }
+        });
 
         jTextFieldSobrenome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
@@ -232,43 +235,25 @@ public class BuscaHospedes extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
 
-    /*public void Search(int room, HotelLES[] hospedes){
-        //int room = Integer.parseInt(txtSearch.getText());
-        if(hospedes[room] != null){
-            String nome = hospedes[room].getHospede().getNome();
-            String sobrenome = hospedes[room].getHospede().getSobrenome();
-            String email = hospedes[room].getHospede().getEmail();
-            String telefone = hospedes[room].getHospede().getTelefone();
-            String niver = hospedes[room].getHospede().getDataNascimento();
-            String cpf = hospedes[room].getHospede().getCPF();
-            String endereco = hospedes[room].getHospede().getEndereco();
-            jTextFieldNome.setText(nome);
-            emailLabel.setText(email);
-            telLabel.setText(telefone);
-            cpfLabel.setText(cpf);
-            niverLabel.setText(niver);
-            enderecoLabel.setText(endereco);
-            
-            //jTextArea1.append("Pessoa no quarto procurado: " + hospedes[room].getHospede().getNome());
-            //JOptionPane.showMessageDialog(null, "Hospede:  " + hospedes[room].getHospede().getNome());
-        }else{
-            JOptionPane.showMessageDialog(null, "Quarto " + room + " vazio!");
-        }
-    } */
+    private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNomeActionPerformed
+
     
     public void pesquisa(String quarto){
-        No busca = h.buscaHospede(quarto);
+        No busca = hash.buscaHash(Integer.parseInt(quarto), h);
+        //No busca = h.buscaHospede(quarto);
         if(busca != null){
-        jTextFieldNome.setText(busca.pessoa.getNome());
-        jTextFieldSobrenome.setText(busca.pessoa.getSobrenome());
-        jTextFieldCPF.setText(busca.pessoa.getCPF());
-        jTextFieldEmail.setText(busca.pessoa.getEmail());
-        jTextFieldEndereco.setText(busca.pessoa.getEndereco());
-        jTextFieldData.setText(busca.pessoa.getDataNascimento());
-        jTextFieldTelefone.setText(busca.pessoa.getTelefone());
+            jTextFieldNome.setText(busca.pessoa.getNome());
+            jTextFieldSobrenome.setText(busca.pessoa.getSobrenome());
+            jTextFieldCPF.setText(busca.pessoa.getCPF());
+            jTextFieldEmail.setText(busca.pessoa.getEmail());
+            jTextFieldEndereco.setText(busca.pessoa.getEndereco());
+            jTextFieldData.setText(busca.pessoa.getDataNascimento());
+            jTextFieldTelefone.setText(busca.pessoa.getTelefone());
         } 
         else{
-            JOptionPane.showMessageDialog(null, "Quarto sem hóspede");
+            JOptionPane.showMessageDialog(null, "Quarto nº " + quarto + " sem hóspede");
         }
     }
     /**

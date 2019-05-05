@@ -24,14 +24,14 @@ public class HotelLDE {
     this.n = 0;
   }
 
-  public void insereLDE(Hospede hospede){
+  public No insereLDE(Hospede hospede){
     //No novo = new No();
     novo.pessoa = hospede;
     novo.prox = null;
     No anterior = null;
     No proximo = primeiro;
 
-    while(proximo != null){ //&& proximo.valor < hospede){
+    while(proximo != null){ 
       anterior = proximo;
       proximo = proximo.prox;
     }
@@ -43,6 +43,7 @@ public class HotelLDE {
     }
     novo.prox = proximo;
     n++;
+    return novo;
   }
   
   public boolean removeHospede(String x){
@@ -81,8 +82,8 @@ public class HotelLDE {
     No temp = primeiro;
     while(temp != null){
       System.out.println(temp.pessoa.getNome() + " " + temp.pessoa.getSobrenome() + " " + temp.pessoa.getQuarto() + " " + temp.pessoa.getCPF() + " " + temp.pessoa.getEmail() + " " + temp.pessoa.getTelefone() + " " + temp.pessoa.getEndereco() + " " + temp.pessoa.getDataNascimento());
-      System.out.print("avaliacao: ");
-      av.imprimeAvaliacao();
+      //System.out.print("avaliacao: "); ARRUMAR 
+      //av.imprimeAvaliacao(); 
       temp = temp.prox;
     }
   }

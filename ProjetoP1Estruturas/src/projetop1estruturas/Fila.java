@@ -91,13 +91,13 @@ public class Fila {
         senhaApagada = v[i];
         v[i] = 0;
         i = (i+1)%MAX;
-        JOptionPane.showMessageDialog(null, "Senha deletada: " + senhaApagada );
+        JOptionPane.showMessageDialog(null, "Atender senha: " + senhaApagada );
         return true;
     }
     
     void imprime(){
         int x;
-        for(x=i; x !=f ; x = (x+1) % MAX){
+        for(x = i; x != f ; x = (x+1) % MAX){
             System.out.println(v[x] + " ");
         }
         System.out.println("\n");

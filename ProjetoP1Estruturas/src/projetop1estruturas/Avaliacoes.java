@@ -12,42 +12,76 @@ import javax.swing.JOptionPane;
  * @author Eduardo Baptista
  */
 
-/*  implementando a estrutura de dados Pilha dinâmica pra as avaliações desta maneira, as últimas avaliações serão as primeiras a serem vistas */
-
+/*  Implementando a estrutura de dados Pilha para armazenar avaliações dos clientes. Desta maneira, as avaliações mais recentes serão as primeiras a serem vistas */
 public class Avaliacoes {
-    No novo = new No();
-    public Avaliacoes() {
-        this.topo = topo;
-        topo = null;
+
+    /* Verificando se está lotado de avaliações */
+    public boolean listaCheia() {
+        if (topo == tamanho - 1) {
+            return true;
+        }
+        return false;
     }
-    No topo;
-    No anterior;
-    int contador = 0;
+
+    /* Verificando se há espaço para novas avaliações */
+    public boolean listaVazia() {
+        if (topo == -1) {
+            return true;
+        }
+        return false;
+    }
     
-    public void insereAvaliacao(String avaliacao){
-        novo.texto = avaliacao;
-        anterior = topo; 
-        topo = novo;
-        contador++; 
-    } 
+    /* Função que insere uma avaliação */
+    public void insereAvaliacao(String avaliacao) {
+        if (listaCheia() == false) {
+            topo = topo + 1;
+            vetorAvaliacoes[topo] = avaliacao;
+        } else {
+            JOptionPane.showMessageDialog(null, "Lista cheia de avaliações, limpe a lista!");
+        }
+    }
     
- 
-    public String imprimeAvaliacao(){
-        if(novo.texto == null){
-            return "Não há avaliações";
-            //JOptionPane.showMessageDialog(null, "Não há avaliações!");
+    /*Função para remover avaliação do topo */
+    public String removeAvaliacao() {
+        String avaliacaoRemovida;
+        if (listaVazia() == true) {
+            avaliacaoRemovida = "Sem avaliações!";
+        } else {
+            avaliacaoRemovida = vetorAvaliacoes[topo];
+            topo = topo - 1;
+        }
+        return avaliacaoRemovida;
+    }
+    
+    
+    public String imprimeAvaliacoes() {
+        if (listaVazia() == true) {
+            return "Sem avaliações!";
         } 
-        else
-            System.out.println(topo.texto);
-          // JOptionPane.showMessageDialog(null, topo.texto);
-           for(int i = contador-2; i >= 0; i--){
-           // JOptionPane.showMessageDialog(null, anterior.texto);
-             return anterior.texto;
-        }  
+        else {
+            for (int cont = topo; cont >= 0; cont--) {
+                System.out.println(vetorAvaliacoes[cont]);
+                return vetorAvaliacoes[cont];
+            }
+        }
         return null;
-  }
-  public void removeAvaliacao(){
-      
-  }
+    } 
+     
     
+    /*
+    public void imprimeAvaliacoes() {
+        if (listaVazia() == true) {
+            System.out.println("Sem avaliações!");
+        } else {
+            for (int cont = topo; cont >= 0; cont--) {
+                System.out.println(vetorAvaliacoes[cont]);
+            }
+        }
+        System.out.println("");
+    } */
+ 
+    public int tamanho = 100;
+    public int topo = -1;
+    String[] vetorAvaliacoes = new String[tamanho];
+
 }
