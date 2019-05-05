@@ -562,6 +562,7 @@ public class CadastraHospede extends javax.swing.JFrame {
             //System.out.println("======" + quartosDisponiveis[i].getNumQuarto());
             //quartosLES.insereQuartosLES(quartosDisponiveis[i].getNumQuarto(), QTD_QUARTOS, quartosDisponiveis);
             jComboBox.addItem("Quarto nº " + quartosLES.insereQuartosLES(quartosDisponiveis[i].getNumQuarto(), QTD_QUARTOS, quartosDisponiveis));
+            //jComboBox.insertItemAt(item, i);
             //lista.addElement("Quarto nº " + i);
         }
         //jListaQuartos.setModel(lista);
@@ -794,7 +795,7 @@ public class CadastraHospede extends javax.swing.JFrame {
     private int n = 0;
     public int contadorFila = 0;
     private int contador = 0;
-    public int QTD_QUARTOS = 2; //São 50 quartos disponíveis no Hotel
+    public int QTD_QUARTOS = 4; //São 50 quartos disponíveis no Hotel
     public Quartos quartosDisponiveis[] = new Quartos[QTD_QUARTOS];
 
     public JComboBox<String> getjComboBox() {

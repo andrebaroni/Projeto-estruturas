@@ -219,8 +219,9 @@ public class InterfaceHotel extends javax.swing.JFrame {
                 String sobrenome = busca.pessoa.getSobrenome();
                 hash.removeHash(Integer.parseInt(room));
                 JOptionPane.showMessageDialog(null, "Check-out do hóspede " + nome + " " + sobrenome + " realizado com sucesso!");
-                c.getjComboBox().addItem("Quarto nº "
-                        + String.valueOf(quartosLES.insereQuartosLES(Integer.parseInt(room), c.QTD_QUARTOS, c.quartosDisponiveis)));
+                //c.getjComboBox().addItem("Quarto nº "
+                  //      + String.valueOf(quartosLES.insereQuartosLES(Integer.parseInt(room), c.QTD_QUARTOS, c.quartosDisponiveis)));
+                c.getjComboBox().insertItemAt("Quarto nº " + room, Integer.parseInt(room));
                 if(c.contadorFila > 0){
                     c.filaReserva[0].getHospede().setQuarto(room);
                     hash.insereHash(Integer.parseInt(room), c.filaReserva[0].getHospede(), h);
