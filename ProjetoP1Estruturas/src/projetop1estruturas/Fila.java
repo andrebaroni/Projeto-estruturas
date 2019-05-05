@@ -19,7 +19,6 @@ public class Fila {
     private static final int MAX = 50;
     public int i, f, senhaApagada;
     public int v[] = new int[MAX];
-    //final Integer[] v = new Integer[MAX];
     
     
     public Fila(){
@@ -27,6 +26,61 @@ public class Fila {
         this.f = i;
     }
 
+    public void setSenhaApagada(int senhaApagada) {
+        this.senhaApagada = senhaApagada;
+    }
+
+
+    public int getSenhaApagada() {
+        return senhaApagada;
+    }
+    
+    //funcao para enfileirar um numero na fila
+    boolean enfileira(int x){
+        if( ((f+1) % MAX) == i){
+            System.out.println("Fila cheia");
+            return false;
+        }
+        v[f] = x;
+        f = (f+1) % MAX;
+        return true;
+    }
+    
+    //Movimenta a fila caso tenha um checkout de hospede
+    public void desenfileiraHospede(Fila filaReserva[], int tamanhoFila){
+        for(int i = 0; i<tamanhoFila ; i++){
+            filaReserva[i] = filaReserva[i+1];
+            
+        }
+        filaReserva[tamanhoFila]= null;
+    }
+    
+    boolean desenfileira(){
+        if(i == f){
+            JOptionPane.showMessageDialog(null, "Fila vazia");
+            return false;
+        }
+        senhaApagada = v[i];
+        v[i] = 0;
+        i = (i+1)%MAX;
+        JOptionPane.showMessageDialog(null, "Atender senha: " + senhaApagada );
+        return true;
+    }
+    
+    void imprime(){
+        int x;
+        for(x = i; x != f ; x = (x+1) % MAX){
+            System.out.println(v[x] + " ");
+        }
+        System.out.println("\n");
+    }
+    
+    void limpa(){
+        while(i != f){
+            i = (i+1) % MAX;
+        }
+    }
+    
     public Hospede getHospede() {
         return hospede;
     }
@@ -61,59 +115,5 @@ public class Fila {
 
     public void setF(int f) {
         this.f = f;
-    }
-
-    public void setSenhaApagada(int senhaApagada) {
-        this.senhaApagada = senhaApagada;
-    }
-
-
-    public int getSenhaApagada() {
-        return senhaApagada;
-    }
-    
-    boolean enfileira(int x){
-        if( ((f+1) % MAX) == i){
-            System.out.println("Fila cheia");
-            return false;
-        }
-        v[f] = x;
-        f = (f+1) % MAX;
-        return true;
-    }
-    
-    //Movimenta a fila caso tenha um checkout de hospede
-    public void desenfileiraHospede(Fila filaReserva[], int tamanhoFila){
-        for(int i = 0; i<tamanhoFila ; i++){
-            filaReserva[i] = filaReserva[i+1];
-            
-        }
-        filaReserva[tamanhoFila]= null;
-    }
-    boolean desenfileira(){
-        if(i == f){
-            //System.out.println("Fila vazia");
-            JOptionPane.showMessageDialog(null, "Fila vazia");
-            return false;
-        }
-        senhaApagada = v[i];
-        v[i] = 0;
-        i = (i+1)%MAX;
-        JOptionPane.showMessageDialog(null, "Atender senha: " + senhaApagada );
-        return true;
-    }
-    
-    void imprime(){
-        int x;
-        for(x = i; x != f ; x = (x+1) % MAX){
-            System.out.println(v[x] + " ");
-        }
-        System.out.println("\n");
-    }
-    
-    void limpa(){
-        while(i != f){
-            i = (i+1) % MAX;
-        }
     }
 }

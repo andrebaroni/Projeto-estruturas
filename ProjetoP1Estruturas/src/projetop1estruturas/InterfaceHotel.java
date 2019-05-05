@@ -190,23 +190,43 @@ public class InterfaceHotel extends javax.swing.JFrame {
     /* Botão para cadastrar novos hóspedes */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        //CadastraHospede c = new CadastraHospede();
         c.setVisible(true);
-
-        //c.setTxtHoraCheckin(c.getTxtHoraCheckin());
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:");
         Date data = new Date();
+        Calendar calendar = Calendar.getInstance();
+        String dia = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
+        String mes = String.valueOf(calendar.get(Calendar.MONTH)+1);
+        String ano = String.valueOf(calendar.get(Calendar.YEAR));
         String horas = String.valueOf(data.getHours());
         String minutos = String.valueOf(data.getMinutes());
         if(Integer.parseInt(minutos) < 10){
             minutos = "0"+minutos;
         }
+        if(Integer.parseInt(horas) < 10){
+            horas = "0"+horas;
+        }
+        if(Integer.parseInt(dia) < 10){
+            dia = "0"+dia;
+        }
+        if(Integer.parseInt(mes) < 10){
+            mes = "0"+mes;
+        }
+        if(Integer.parseInt(ano) < 10){
+            ano = "0"+ano;
+        }
         String time = horas + ":" + minutos;
+        c.getTxtDiaReserva().setText(dia);
+        c.getTxtMesReserva1().setText(mes);
+        c.getTxtAnoReserva().setText(ano);
+        c.setTxtDiaReserva(c.getTxtDiaReserva());
+        c.setTxtMesReserva1(c.getTxtMesReserva1());
+        c.setTxtAnoReserva(c.getTxtAnoReserva());
         c.getTxtHoraCheckin().setText(time);
         c.setTxtHoraCheckin(c.getTxtHoraCheckin());
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    //botao para fazer checkout de hospede, chama a removeHash para remover
     private void jButtonCheckoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCheckoutActionPerformed
         // TODO add your handling code here:
         String room = JOptionPane.showInputDialog("Digite o quarto: ");
@@ -215,12 +235,13 @@ public class InterfaceHotel extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Informe um quarto");
             } else if (Integer.parseInt(room) >= 1 && Integer.parseInt(room) <= 50) {
                 No busca = hash.buscaHash(Integer.parseInt(room), h);
-                String nome = busca.pessoa.getNome();
-                String sobrenome = busca.pessoa.getSobrenome();
+                String nome = busca.getPessoa().getNome();
+                String sobrenome = busca.getPessoa().getSobrenome();
                 hash.removeHash(Integer.parseInt(room));
                 JOptionPane.showMessageDialog(null, "Check-out do hóspede " + nome + " " + sobrenome + " realizado com sucesso!");
-                c.getjComboBox().addItem("Quarto nº "
-                        + String.valueOf(quartosLES.insereQuartosLES(Integer.parseInt(room), c.QTD_QUARTOS, c.quartosDisponiveis)));
+                //c.getjComboBox().addItem("Quarto nº "
+                        //+ String.valueOf(quartosLES.insereQuartosLES(Integer.parseInt(room), c.QTD_QUARTOS, c.quartosDisponiveis)));
+                c.getjComboBox().insertItemAt("Quarto nº " + room, Integer.parseInt(room));
                 if(c.contadorFila > 0){
                     c.filaReserva[0].getHospede().setQuarto(room);
                     hash.insereHash(Integer.parseInt(room), c.filaReserva[0].getHospede(), h);
@@ -237,50 +258,48 @@ public class InterfaceHotel extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonCheckoutActionPerformed
 
-
+//botao para buscar hospede no hotel
     private void jButtonBuscaHospedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscaHospedeActionPerformed
         // TODO add your handling code here:
         BuscaHospedes busca_hospedes = new BuscaHospedes();
-        //bh.setVisible(true);
         busca_hospedes.setVisible(true);
         String room = JOptionPane.showInputDialog("Informe o quarto do hóspede: ");
         busca_hospedes.pesquisa(room);
 
     }//GEN-LAST:event_jButtonBuscaHospedeActionPerformed
 
+    //botao para mostrar a fila reserva
     private void jButtonFilaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFilaReservaActionPerformed
-        //for(int i = 0; i < c.contadorFila; i++){
-        //c.filaReserva[i].getHospede().getNome();
         mostraFila MostraFila = new mostraFila();
         MostraFila.mostraFilaReserva(c.filaReserva);
         MostraFila.setVisible(true);
-        //}
     }//GEN-LAST:event_jButtonFilaReservaActionPerformed
 
+    //botao para adicionar avaliacoes
     private void jButtonAvaliacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAvaliacaoActionPerformed
         // TODO add your handling code here:
         txtAv.setVisible(true);
     }//GEN-LAST:event_jButtonAvaliacaoActionPerformed
 
+    //botao para mostrar as avaliacoes
     private void jButtonVerAvaliacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerAvaliacoesActionPerformed
         // TODO add your handling code here:
         VerAvaliacoes verAv = new VerAvaliacoes();
         verAv.setVisible(true);
-        //verAv.getjTextAreaAvaliacoes().append(String.valueOf(av.imprimeAvaliacoes()));
-        //verAv.setjTextAreaAvaliacoes(verAv.getjTextAreaAvaliacoes());
         for(int i = av.topo; i >= 0; i--){
             verAv.getjTextAreaAvaliacoes().append(av.vetorAvaliacoes[i] +"\n\n");
             verAv.setjTextAreaAvaliacoes(verAv.getjTextAreaAvaliacoes());
         }
-        //JOptionPane.showMessageDialog(null, av.imprimeAvaliacoes());
     }//GEN-LAST:event_jButtonVerAvaliacoesActionPerformed
 
+    //botao para atender a proxima senha da recepcao
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        f.desenfileira(); //quando acaba de cadastrar, desenfileira uma
+        f.desenfileira();
         n--;
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    //botao para mostrar a fila da recepcao
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         int i = 0;
@@ -289,6 +308,7 @@ public class InterfaceHotel extends javax.swing.JFrame {
         f.imprime();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    //botao para adicionar uma nova senha na recepcao
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         f.enfileira(senha);
@@ -336,7 +356,6 @@ public class InterfaceHotel extends javax.swing.JFrame {
 
     }
 
-    //private QuartosDisponiveis quartos = new QuartosDisponiveis();
     public int senha = 1;
     public int n = 0;
     public int print[] = new int[n + 1];
@@ -350,9 +369,7 @@ public class InterfaceHotel extends javax.swing.JFrame {
     public static TextoAvaliacao txtAv = new TextoAvaliacao();
     public static Avaliacoes av = new Avaliacoes();
     public static Hash hash = new Hash();
-
-    //public static Hospede hospede = new Hospede();
-    //private ArrayList<HotelLES> hospedes = new ArrayList<>();
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;

@@ -239,18 +239,17 @@ public class BuscaHospedes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNomeActionPerformed
 
-    
+    //funcao que chama a pesquisa na hash pelo numero do quarto
     public void pesquisa(String quarto){
         No busca = hash.buscaHash(Integer.parseInt(quarto), h);
-        //No busca = h.buscaHospede(quarto);
         if(busca != null){
-            jTextFieldNome.setText(busca.pessoa.getNome());
-            jTextFieldSobrenome.setText(busca.pessoa.getSobrenome());
-            jTextFieldCPF.setText(busca.pessoa.getCPF());
-            jTextFieldEmail.setText(busca.pessoa.getEmail());
-            jTextFieldEndereco.setText(busca.pessoa.getEndereco());
-            jTextFieldData.setText(busca.pessoa.getDataNascimento());
-            jTextFieldTelefone.setText(busca.pessoa.getTelefone());
+            jTextFieldNome.setText(busca.getPessoa().getNome());
+            jTextFieldSobrenome.setText(busca.getPessoa().getSobrenome());
+            jTextFieldCPF.setText(busca.getPessoa().getCPF());
+            jTextFieldEmail.setText(busca.getPessoa().getEmail());
+            jTextFieldEndereco.setText(busca.getPessoa().getEndereco());
+            jTextFieldData.setText(busca.getPessoa().getDataNascimento());
+            jTextFieldTelefone.setText(busca.getPessoa().getTelefone());
         } 
         else{
             JOptionPane.showMessageDialog(null, "Quarto nº " + quarto + " sem hóspede");

@@ -24,6 +24,7 @@ public class mostraFila extends javax.swing.JFrame {
         initComponents();
     }
     
+    //função que mostra inserindo no campo mostraTexto as informações da fila de reserva
     public void mostraFilaReserva(Fila[] f ){
         try{
             for(int i = 0; i < c.contadorFila ; i++ ){
@@ -35,15 +36,14 @@ public class mostraFila extends javax.swing.JFrame {
         }
     }
 
+    //função que mostra inserindo no campo mostraTexto as informações da fila da recepção
     public void mostra(Fila fila){
       
         for(int i = fila.getI(); i != fila.getF(); i = (i+1)% fila.getMAX()){
-            //jTextArea1.append("Nome: " + hospedes[i].getHospede().getNome() + " - Quarto: " + hospedes[i].getHospede().getQuarto() + "\n");
             if(fila.getV()[i] != 0){
                 mostraTexto.append(fila.getV()[i] + " - ");
             }
         }
-        //show.append(null);
     }
     /**
      * This method is called from within the constructor to initialize the form.

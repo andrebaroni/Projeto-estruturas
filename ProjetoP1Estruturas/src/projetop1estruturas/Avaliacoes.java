@@ -66,19 +66,6 @@ public class Avaliacoes {
         }
         return null;
     } 
-     
-    
-    /*
-    public void imprimeAvaliacoes() {
-        if (listaVazia() == true) {
-            System.out.println("Sem avaliações!");
-        } else {
-            for (int cont = topo; cont >= 0; cont--) {
-                System.out.println(vetorAvaliacoes[cont]);
-            }
-        }
-        System.out.println("");
-    } */
  
     public int tamanho = 100;
     public int topo = -1;
