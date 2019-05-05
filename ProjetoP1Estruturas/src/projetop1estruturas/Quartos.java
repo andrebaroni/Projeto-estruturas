@@ -60,8 +60,9 @@ public class Quartos {
             v[numero] = new Quartos();
             v[numero].setNumQuarto(x);
             //System.out.println("INSERIU LES" + v[numero].getNumQuarto());
+            int retornaQuarto = v[numero].getNumQuarto();
             numero++;
-            return v[numero--].getNumQuarto();
+            return retornaQuarto;
     
     }
     
