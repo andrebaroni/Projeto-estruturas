@@ -5,6 +5,8 @@
  */
 package projetop1estruturas;
 
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import static projetop1estruturas.InterfaceHotel.c;
 
 
@@ -23,10 +25,13 @@ public class mostraFila extends javax.swing.JFrame {
     }
     
     public void mostraFilaReserva(Fila[] f ){
-        for(int i = 0; i < c.contadorFila ; i++ ){
-          mostraTexto.append("Nome: " +f[i].getHospede().getNome() + "\n"
-                              +"Email: " + f[i].getHospede().getEmail()+ "\n"
-                              +"Telefone: " + f[i].getHospede().getTelefone() + "\n" + "\n");
+        try{
+            for(int i = 0; i < c.contadorFila ; i++ ){
+              mostraTexto.append("Nome: " +f[i].getHospede().getNome() + "\n"
+                                  +"Email: " + f[i].getHospede().getEmail()+ "\n"
+                                  +"Telefone: " + f[i].getHospede().getTelefone() + "\n" + "\n");
+            }
+        }catch(NullPointerException e){
         }
     }
 
@@ -132,6 +137,14 @@ public class mostraFila extends javax.swing.JFrame {
                 new mostraFila().setVisible(true);
             }
         });
+    }
+
+    public JTextArea getMostraTexto() {
+        return mostraTexto;
+    }
+
+    public void setMostraTexto(JTextArea mostraTexto) {
+        this.mostraTexto = mostraTexto;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -227,6 +227,8 @@ public class InterfaceHotel extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null,"Adicionou hospede "+c.filaReserva[0].getHospede().getNome()+
                             " que estava na fila de espera no quarto " + room);
                     c.getjComboBox().removeItemAt(Integer.parseInt(room));
+                    f.desenfileiraHospede(c.filaReserva,c.contadorFila);
+                    
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Informe um quarto");
