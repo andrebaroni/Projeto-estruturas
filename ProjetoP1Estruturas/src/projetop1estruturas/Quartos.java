@@ -52,14 +52,14 @@ public class Quartos {
             JOptionPane.showMessageDialog(null, MensagensErro.QUARTOS_OCUPADOS.getMensagem());
         }
         
-        for(; i <numero && v[i].getNumQuarto() < x; i ++){}
-            for(int j = numero; j> i; j--){
+        for(; i < numero && v[i].getNumQuarto() < x; i ++){}
+            for(int j = numero; j > i; j--){
                 v[j] = v[j-1];
             }
            
             v[numero] = new Quartos();
             v[numero].setNumQuarto(x);
-            System.out.println("INSERIU LES" + v[numero].getNumQuarto());
+            //System.out.println("INSERIU LES" + v[numero].getNumQuarto());
             numero++;
             return v[numero--].getNumQuarto();
     
