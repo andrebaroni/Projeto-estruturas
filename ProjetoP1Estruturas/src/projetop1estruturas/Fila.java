@@ -48,7 +48,7 @@ public class Fila {
     
     //Movimenta a fila caso tenha um checkout de hospede
     public void desenfileiraHospede(Fila filaReserva[], int tamanhoFila){
-        for(int i = 0; i<tamanhoFila ; i++){
+        for(int i = 0; i<tamanhoFila-1 ; i++){
             filaReserva[i] = filaReserva[i+1];
             
         }
