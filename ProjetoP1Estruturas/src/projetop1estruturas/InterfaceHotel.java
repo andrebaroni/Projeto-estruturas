@@ -239,9 +239,17 @@ public class InterfaceHotel extends javax.swing.JFrame {
                 String sobrenome = busca.getPessoa().getSobrenome();
                 hash.removeHash(Integer.parseInt(room));
                 JOptionPane.showMessageDialog(null, "Check-out do hóspede " + nome + " " + sobrenome + " realizado com sucesso!");
-                //c.getjComboBox().addItem("Quarto nº "
-                        //+ String.valueOf(quartosLES.insereQuartosLES(Integer.parseInt(room), c.QTD_QUARTOS, c.quartosDisponiveis)));
-                c.getjComboBox().insertItemAt("Quarto nº " + room, Integer.parseInt(room));
+                System.out.println("aqui");
+                if(c.getjComboBox().getModel().getSize() > 1){
+                    System.out.println("aquiaqui");
+                    c.getjComboBox().insertItemAt("Quarto nº " + room, Integer.parseInt(room));
+                }else if(c.getjComboBox().getModel().getSize() == 0){
+                    System.out.println("aquii");
+                    c.getjComboBox().insertItemAt("Quarto nº " + room, 1);
+                    f.desenfileiraHospede(c.filaReserva,c.contadorFila);
+                }
+                //c.getjComboBox().insertItemAt("Quarto nº " + room, Integer.parseInt(room));
+                
                 if(c.contadorFila > 0){
                     c.filaReserva[0].getHospede().setQuarto(room);
                     hash.insereHash(Integer.parseInt(room), c.filaReserva[0].getHospede(), h);
@@ -249,7 +257,7 @@ public class InterfaceHotel extends javax.swing.JFrame {
                             " que estava na fila de espera no quarto " + room);
                     c.getjComboBox().removeItemAt(Integer.parseInt(room));
                     f.desenfileiraHospede(c.filaReserva,c.contadorFila);
-                    
+                    c.contadorFila--;
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Informe um quarto");
